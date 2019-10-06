@@ -1,6 +1,6 @@
 {
   "name": "kodhus-component-library",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "dependencies": {
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
