@@ -72,7 +72,7 @@ const StyledButton = styled.button`
  Use this button as your main button in the page, If you don't pass the appearance props, the default will be primary. Children is the text within the button.
 **/
 
-const Button = ({ children, ...props }) => {
+export const Button = ({ children, ...props }) => {
   const innerText = <Text>{children}</Text>;
 
   return <StyledButton {...props}>{innerText}</StyledButton>;
@@ -88,5 +88,3 @@ Button.defaultProps = {
   appearance: APPEARANCES.PRIMARY,
   size: SIZES.MEDIUM
 };
-
-export default Button;
