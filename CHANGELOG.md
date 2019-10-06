@@ -1,12 +1,8 @@
 # v0.1.2 (Sun Oct 06 2019)
 
-#### ⚠️  Pushed to master
-
-- entry point changed  (ramins@@spotify.com)
+#### ⚠️ Pushed to master
 
 #### Authors: 1
-
-- ramins (ramins@@spotify.com)
 
 ---
 
