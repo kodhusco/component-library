@@ -3,7 +3,11 @@ import Button from "./Button";
 
 export default {
   title: "Design System | Button",
-  component: Button
+  parameters: {
+    component: Button,
+    componentSubtitle:
+      "Displays a primary button with custom page in your interface"
+  }
 };
 
 export const primaryButton = () => (
