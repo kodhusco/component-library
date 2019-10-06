@@ -1,7 +1,6 @@
 {
   "name": "kodhus-component-library",
   "version": "0.1.1",
-  "private": true,
   "dependencies": {
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
@@ -46,7 +45,7 @@
     "prettier": "^1.18.2"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kodhusco/component-library.git"
