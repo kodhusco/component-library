@@ -1,5 +1,5 @@
 {
-  "name": "kodhus-component-library",
+  "name": "kodhus-design-library",
   "version": "0.7.0",
   "dependencies": {
     "polished": "^3.4.1",
