@@ -2,6 +2,7 @@
   "name": "kodhus-design-library",
   "version": "0.8.0",
   "dependencies": {
+    "@babel/cli": "^7.6.2",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
@@ -10,13 +11,12 @@
     "styled-components": "^4.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "build-storybook-docs": "build-storybook -s public --docs",
     "build": "BABEL_ENV=production babel src -d dist",
+    "prepare": "npm run build",
     "release": "auto shipit"
   },
   "eslintConfig": {
@@ -35,7 +35,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
     "@storybook/addon-a11y": "^5.2.2",
     "@storybook/addon-actions": "^5.2.1",
     "@storybook/addon-docs": "^5.2.1",
@@ -47,10 +46,10 @@
     "prettier": "^1.18.2"
   },
   "description": "Kodhus ui library",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "repository": "git+https://github.com/kodhusco/component-library.git",
   "author": "kodhus <kodhus@kodhus.com>",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/kodhusco/component-library.git#readme",
   "private": false
 }
