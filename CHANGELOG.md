@@ -1,3 +1,18 @@
+# v0.8.1 (Mon Oct 07 2019)
+
+#### ⚠️  Pushed to master
+
+- remove git from in front of repo address  (kodhus@kodhus.com)
+- Fix ci issue  (kodhus@kodhus.com)
+- Fix package.json  (kodhus@kodhus.com)
+- yarn release  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.1.1 (Mon Oct 07 2019)
 
 #### 🐛 Bug Fix
