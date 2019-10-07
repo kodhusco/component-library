@@ -42,8 +42,6 @@ const StyledButton = styled.button`
   opacity: 1;
   margin: 0;
   outline: 0;
-  border: 10px solid red;
-  font-size: 20px;
 
   font-size: ${props =>
     props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2}px;
