@@ -47,7 +47,7 @@
   },
   "description": "Kodhus ui library",
   "main": "dist/index.js",
-  "repository": "git+https://github.com/kodhusco/component-library.git",
+  "repository": "https://github.com/kodhusco/component-library.git",
   "author": "kodhus <kodhus@kodhus.com>",
   "license": "MIT",
   "homepage": "https://github.com/kodhusco/component-library.git#readme",
