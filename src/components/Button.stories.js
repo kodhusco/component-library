@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "./Button";
 
 export default {
-  title: "Design System | Button",
+  title: "Components | Button",
   parameters: {
     component: Button,
     componentSubtitle:
