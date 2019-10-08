@@ -30,7 +30,7 @@ configure(
   [
     require.context("../src/components", false, /Intro\.stories\.mdx/),
     require.context("../src/components", false, /Quickstart\.stories\.mdx/),
-    require.context("../src/components", true, /\.stories\.(js)$/)
+    require.context("../src/components", true, /\.stories\.(js|mdx)$/)
   ],
   module
 );

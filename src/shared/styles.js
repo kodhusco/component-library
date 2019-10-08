@@ -33,7 +33,7 @@ export const color = {
 
 export const typography = {
   type: {
-    primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+    primary: '"Rubik", "Helvetica Neue", Helvetica, Arial, sans-serif',
     code:
       '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
   },
