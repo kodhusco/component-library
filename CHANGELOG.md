@@ -1,3 +1,15 @@
+# v0.10.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Cards [#4](https://github.com/kodhusco/component-library/pull/4) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.9.0 (Mon Oct 07 2019)
 
 #### 🚀  Enhancement
