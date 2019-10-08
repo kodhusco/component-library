@@ -112,7 +112,7 @@ export const bodyStyles = css`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,900,900i&display=swap');
 
   body {
     ${bodyStyles}
