@@ -1,0 +1,36 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Quickstart | Instructions" />
+
+# Quickstart
+The library is a npm package with the following name `design-library`.
+
+Install the dependency using `yarn` or `npm` as follow:
+
+```js
+yarn add design-library react styled-components
+```
+
+> You can see that we are also installing react and styled-components which are dependencies for our library.
+
+For example if you want to use button component the sample will be as follow:
+
+```
+import { Button } from 'design-library';
+```
+
+and then add it as follow:
+```
+// MyComponent.js
+import React from 'react';
+import { Button } from 'design-library';
+
+function MyComponent(props) {
+  return (
+    <Button appearance="primary" onClick={() => alert('Hello!')}>Click Me!</ButtonPrimary>
+  );
+}
+
+export default MyComponent;
+```
+

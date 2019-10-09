@@ -65,7 +65,7 @@ const StyledButton = styled.button`
       &:focus:hover {
         box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
       }
-    `};
+    `}
 `;
 
 /**
