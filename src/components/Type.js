@@ -51,6 +51,10 @@ const H6 = styled.h1`
       : typography.weight.bold};
 `;
 
+const StyledDiv = styled.div`
+  font-size: ${typography.size.s2}px;
+`;
+
 export const Type = ({ as, variant, children }) => {
   let type;
   if (as === "h1") {
@@ -68,6 +72,8 @@ export const Type = ({ as, variant, children }) => {
   }
   return type;
 };
+
+export const Subtitle = ({ children }) => <StyledDiv>{children}</StyledDiv>;
 
 Type.propTypes = {
   as: PropTypes.string,
