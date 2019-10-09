@@ -8,7 +8,6 @@ const StyledDiv = styled.div`
   overflow: hidden;
   border-radius: 3px;
   box-sizing: border-box;
-  min-height: 340px;
   border: 1px solid #eee;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 `;
@@ -36,9 +35,9 @@ const Children = styled.div`
   margin-top: 24px;
 `;
 
-export const HeroCard = ({ title, image, children }) => {
+export const HeroCard = ({ title, image, children, ...props }) => {
   return (
-    <StyledDiv>
+    <StyledDiv className={props.className}>
       <Image image={image}></Image>
       <Content>
         <Title>{title}</Title>
