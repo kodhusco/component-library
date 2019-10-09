@@ -71,7 +71,11 @@ export const Card = ({
   ...props
 }) => {
   return (
-    <StyledDiv image={image} hoverEffect={hoverEffect} {...props}>
+    <StyledDiv
+      image={image}
+      hoverEffect={hoverEffect}
+      className={props.className}
+    >
       <InfoWrapper theme={theme}>
         <Title>{title}</Title>
         <SubTitle>{subTitle}</SubTitle>
