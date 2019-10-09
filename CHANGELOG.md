@@ -1,3 +1,15 @@
+# v0.14.0 (Wed Oct 09 2019)
+
+#### 🚀  Enhancement
+
+- separator image [#12](https://github.com/kodhusco/component-library/pull/12) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.13.4 (Wed Oct 09 2019)
 
 #### ⚠️  Pushed to master
