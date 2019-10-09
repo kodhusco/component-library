@@ -55,25 +55,51 @@ const StyledDiv = styled.div`
   font-size: ${typography.size.s2}px;
 `;
 
-export const Type = ({ as, variant, children }) => {
+export const Type = ({ as, variant, children, ...props }) => {
   let type;
   if (as === "h1") {
-    type = <H1 variant={variant}>{children}</H1>;
+    type = (
+      <H1 variant={variant} {...props}>
+        {children}
+      </H1>
+    );
   } else if (as === "h2") {
-    type = <H2 variant={variant}>{children}</H2>;
+    type = (
+      <H2 variant={variant} {...props}>
+        {children}
+      </H2>
+    );
   } else if (as === "h3") {
-    type = <H3 variant={variant}>{children}</H3>;
+    type = (
+      <H3 variant={variant} {...props}>
+        {children}
+      </H3>
+    );
   } else if (as === "h4") {
-    type = <H4 variant={variant}>{children}</H4>;
+    type = (
+      <H4 variant={variant} {...props}>
+        {children}
+      </H4>
+    );
   } else if (as === "h5") {
-    type = <H5 variant={variant}>{children}</H5>;
+    type = (
+      <H5 variant={variant} {...props}>
+        {children}
+      </H5>
+    );
   } else if (as === "h6") {
-    type = <H6 variant={variant}>{children}</H6>;
+    type = (
+      <H6 variant={variant} {...props}>
+        {children}
+      </H6>
+    );
   }
   return type;
 };
 
-export const Subtitle = ({ children }) => <StyledDiv>{children}</StyledDiv>;
+export const Subtitle = ({ children, ...props }) => (
+  <StyledDiv {...props}>{children}</StyledDiv>
+);
 
 Type.propTypes = {
   as: PropTypes.string,
