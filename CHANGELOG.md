@@ -1,3 +1,16 @@
+# v0.11.1 (Wed Oct 09 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- Adding new components to export  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.11.0 (Wed Oct 09 2019)
 
 #### 🚀  Enhancement
