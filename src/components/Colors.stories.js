@@ -1,9 +1,10 @@
 import React from "react";
 import { color } from "../shared/styles";
 import styled from "styled-components";
+import { storiesOf } from "@storybook/react";
 
 export default {
-  title: "Styles | Colors",
+  title: "Extra | Styles",
   parameters: {
     componentSubtitle: "Design system colors"
   }
@@ -19,6 +20,7 @@ const Color = styled.div`
 
 const ColorCard = styled.div`
   height: 30px;
+  border-radius: 3px;
 `;
 
 const Info = styled.div`
@@ -26,7 +28,7 @@ const Info = styled.div`
   text-align: center;
 `;
 
-export const colors = () => (
+const Colors = () => (
   <div style={{ display: "flex", flexWrap: "wrap", marginTop: 40 }}>
     {Object.keys(color).map(key => (
       <Color>
@@ -52,6 +54,6 @@ export const colors = () => (
   </div>
 );
 
-colors.story = {
-  name: "Brand"
-};
+storiesOf("Styles", module).add("Colors", () => <Colors />, {
+  options: { showPanel: false }
+});
