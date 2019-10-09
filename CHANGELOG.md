@@ -1,3 +1,16 @@
+# v0.13.1 (Wed Oct 09 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- Change margin-bottom on h1  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.13.0 (Wed Oct 09 2019)
 
 #### 🚀  Enhancement
