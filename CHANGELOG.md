@@ -1,3 +1,15 @@
+# v0.11.2 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- add new variants light to types [#7](https://github.com/kodhusco/component-library/pull/7) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.11.1 (Wed Oct 09 2019)
 
 #### ⚠️  Pushed to master
