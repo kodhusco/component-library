@@ -26,7 +26,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 30px;
+  font-size: ${typography.size.m1}px;
   font-weight: ${typography.weight.regular};
   line-height: 1;
 `;
