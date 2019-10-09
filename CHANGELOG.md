@@ -1,3 +1,16 @@
+# v0.13.4 (Wed Oct 09 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- Fix issue with card className passing  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.13.3 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
