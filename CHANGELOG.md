@@ -1,3 +1,15 @@
+# v0.14.2 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Fix height [#13](https://github.com/kodhusco/component-library/pull/13) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.14.1 (Wed Oct 09 2019)
 
 #### ⚠️  Pushed to master
