@@ -1,3 +1,15 @@
+# v0.11.0 (Wed Oct 09 2019)
+
+#### 🚀  Enhancement
+
+- Types [#6](https://github.com/kodhusco/component-library/pull/6) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.10.1 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
