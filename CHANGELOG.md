@@ -1,3 +1,15 @@
+# v0.12.0 (Wed Oct 09 2019)
+
+#### 🚀  Enhancement
+
+- adding subtitle [#8](https://github.com/kodhusco/component-library/pull/8) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.11.2 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
