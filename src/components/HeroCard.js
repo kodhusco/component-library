@@ -24,6 +24,7 @@ const Image = styled.div`
     background: url(${props.image});
     background-size: cover;
     background-position: center center;
+    border-bottom: 1px solid #ddd;
   `}
 `;
 const Content = styled.div`
