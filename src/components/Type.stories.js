@@ -1,11 +1,10 @@
 import React from "react";
-import { Type } from "./Type";
+import { Type, Subtitle } from "./Type";
 import styled from "styled-components";
 
 export default {
   title: "Components | Type",
   parameters: {
-    component: Type,
     componentSubtitle: "Displays a HeroCard"
   }
 };
@@ -83,6 +82,17 @@ export const LightHeadings = () => (
 
 LightHeadings.story = {
   name: "Light headings",
+  parameters: {
+    options: {
+      showPanel: false
+    }
+  }
+};
+
+export const sub = () => <Subtitle>Here goes the subtitle</Subtitle>;
+
+sub.story = {
+  name: "Sub title",
   parameters: {
     options: {
       showPanel: false
