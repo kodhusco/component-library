@@ -1,3 +1,15 @@
+# v0.13.2 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- add color theme to card for dark and light theme [#10](https://github.com/kodhusco/component-library/pull/10) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.13.1 (Wed Oct 09 2019)
 
 #### ⚠️  Pushed to master
