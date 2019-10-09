@@ -13,7 +13,7 @@ export const defaultCard = () => (
   <Card
     title="Gothenburg"
     subTitle="Great city with warm population"
-    type="hero"
+    theme="light"
     image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
   />
 );
@@ -26,6 +26,7 @@ export const CardWithHoverEffect = () => (
   <Card
     title="Gothenburg"
     subTitle="Great city with warm population"
+    theme="light"
     image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
     hoverEffect="gray_scale"
   />
