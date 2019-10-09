@@ -3,11 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { typography } from "../shared/styles";
 
-const HOVER_EFFECTS = {
-  NONE: "none",
-  GRAY_SCALE: "gray_scale"
-};
-
 const StyledDiv = styled.div`
   position: relative;
   overflow: hidden;
@@ -35,15 +30,6 @@ const Title = styled.div`
   font-size: 30px;
   font-weight: ${typography.weight.regular};
   line-height: 1;
-`;
-
-const SubTitle = styled.div`
-  margin-top: 10px;
-  font-size: 14px;
-  display: inline-block;
-  border-radius: 3px;
-  transition: all 0.4s;
-  font-weight: ${typography.weight.regular};
 `;
 
 const Children = styled.div`
