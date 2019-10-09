@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { typography } from "../shared/styles";
+import { typography, color } from "../shared/styles";
 
 const HOVER_EFFECTS = {
   NONE: "none",
   GRAY_SCALE: "gray_scale"
+};
+
+const COLOR_THEME = {
+  LIGHT: "light",
+  DARK: "dark"
 };
 
 const StyledDiv = styled.div`
@@ -20,7 +25,6 @@ const StyledDiv = styled.div`
             filter: grayscale(0);
         }
     `}
-  border-radius: 2px;
   box-sizing: border-box;
   ${props => `
     background: url(${props.image});
@@ -31,7 +35,8 @@ const StyledDiv = styled.div`
 `;
 
 const InfoWrapper = styled.div`
-  color: #fff;
+  color: ${props =>
+    props.theme === COLOR_THEME.LIGHT ? color.lighter : color.darkest};
   position: absolute;
   left: 0;
   bottom: 0;
@@ -57,10 +62,10 @@ const SubTitle = styled.div`
   font-weight: ${typography.weight.regular};
 `;
 
-export const Card = ({ title, subTitle, image, hoverEffect }) => {
+export const Card = ({ title, subTitle, image, theme, hoverEffect }) => {
   return (
     <StyledDiv image={image} hoverEffect={hoverEffect}>
-      <InfoWrapper class="name">
+      <InfoWrapper theme={theme}>
         <Title>{title}</Title>
         <SubTitle>{subTitle}</SubTitle>
       </InfoWrapper>
@@ -71,9 +76,11 @@ export const Card = ({ title, subTitle, image, hoverEffect }) => {
 Card.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
-  hoverEffect: PropTypes.oneOf(Object.values(HOVER_EFFECTS))
+  hoverEffect: PropTypes.oneOf(Object.values(HOVER_EFFECTS)),
+  style: PropTypes.oneOf(Object.values(COLOR_THEME))
 };
 
 Card.defaultProps = {
-  hoverEffect: HOVER_EFFECTS.NONE
+  hoverEffect: HOVER_EFFECTS.NONE,
+  style: COLOR_THEME.DARK
 };
