@@ -10,6 +10,7 @@ const VARIANT = {
 
 const H1 = styled.h1`
   font-size: ${typography.size.l2}px;
+  margin-bottom: 10px;
   font-weight: ${props =>
     props.variant === VARIANT.LIGHT
       ? typography.weight.regular
@@ -17,6 +18,7 @@ const H1 = styled.h1`
 `;
 const H2 = styled.h1`
   font-size: ${typography.size.l1}px;
+  margin-bottom: 10px;
   font-weight: ${props =>
     props.variant === VARIANT.LIGHT
       ? typography.weight.regular
@@ -24,6 +26,7 @@ const H2 = styled.h1`
 `;
 const H3 = styled.h1`
   font-size: ${typography.size.m3}px;
+  margin-bottom: 10px;
   font-weight: ${props =>
     props.variant === VARIANT.LIGHT
       ? typography.weight.regular
@@ -31,6 +34,7 @@ const H3 = styled.h1`
 `;
 const H4 = styled.h1`
   font-size: ${typography.size.m2}px;
+  margin-bottom: 10px;
   font-weight: ${props =>
     props.variant === VARIANT.LIGHT
       ? typography.weight.regular
@@ -38,6 +42,7 @@ const H4 = styled.h1`
 `;
 const H5 = styled.h1`
   font-size: ${typography.size.m1}px;
+  margin-bottom: 10px;
   font-weight: ${props =>
     props.variant === VARIANT.LIGHT
       ? typography.weight.regular
@@ -45,6 +50,7 @@ const H5 = styled.h1`
 `;
 const H6 = styled.h1`
   font-size: ${typography.size.s3}px;
+  margin-bottom: 10px;
   font-weight: ${props =>
     props.variant === VARIANT.LIGHT
       ? typography.weight.regular
