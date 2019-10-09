@@ -1,3 +1,15 @@
+# v0.13.0 (Wed Oct 09 2019)
+
+#### 🚀  Enhancement
+
+- passing arbitary props down to component [#9](https://github.com/kodhusco/component-library/pull/9) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.12.0 (Wed Oct 09 2019)
 
 #### 🚀  Enhancement
