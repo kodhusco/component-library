@@ -1,3 +1,15 @@
+# v0.13.3 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Pass client props to component [#11](https://github.com/kodhusco/component-library/pull/11) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.13.2 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
