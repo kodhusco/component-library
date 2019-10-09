@@ -62,9 +62,16 @@ const SubTitle = styled.div`
   font-weight: ${typography.weight.regular};
 `;
 
-export const Card = ({ title, subTitle, image, theme, hoverEffect }) => {
+export const Card = ({
+  title,
+  subTitle,
+  image,
+  theme,
+  hoverEffect,
+  ...props
+}) => {
   return (
-    <StyledDiv image={image} hoverEffect={hoverEffect}>
+    <StyledDiv image={image} hoverEffect={hoverEffect} {...props}>
       <InfoWrapper theme={theme}>
         <Title>{title}</Title>
         <SubTitle>{subTitle}</SubTitle>
