@@ -1,3 +1,15 @@
+# v0.14.3 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Change herocard title size [#14](https://github.com/kodhusco/component-library/pull/14) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.14.2 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
