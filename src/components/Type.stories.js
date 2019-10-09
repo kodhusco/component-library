@@ -45,3 +45,47 @@ Headings.story = {
     }
   }
 };
+
+export const LightHeadings = () => (
+  <div>
+    <TypeWrapper>
+      <Type as="h1" variant="light">
+        Heading 1
+      </Type>
+    </TypeWrapper>
+    <TypeWrapper>
+      <Type as="h2" variant="light">
+        Heading 2
+      </Type>
+    </TypeWrapper>
+    <TypeWrapper>
+      <Type as="h3" variant="light">
+        Heading 3
+      </Type>
+    </TypeWrapper>
+    <TypeWrapper>
+      <Type as="h4" variant="light">
+        Heading 4
+      </Type>
+    </TypeWrapper>
+    <TypeWrapper>
+      <Type as="h5" variant="light">
+        Heading 5
+      </Type>
+    </TypeWrapper>
+    <TypeWrapper>
+      <Type as="h6" variant="light">
+        Heading 6
+      </Type>
+    </TypeWrapper>
+  </div>
+);
+
+LightHeadings.story = {
+  name: "Light headings",
+  parameters: {
+    options: {
+      showPanel: false
+    }
+  }
+};
