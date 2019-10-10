@@ -32,6 +32,6 @@ export const CardAsList = () => (
   </HeroCard>
 );
 
-defaultCard.story = {
+CardAsList.story = {
   name: "Card as List"
 };
