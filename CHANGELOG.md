@@ -1,3 +1,15 @@
+# v0.16.0 (Thu Oct 10 2019)
+
+#### 🚀  Enhancement
+
+- Add button group [#16](https://github.com/kodhusco/component-library/pull/16) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.15.0 (Thu Oct 10 2019)
 
 #### 🚀  Enhancement
