@@ -21,6 +21,7 @@ const APPEARANCES = {
 const Text = styled.span`
   display: inline-block;
   vertical-align: top;
+  font-weight: ${typography.weight.regular};
 `;
 
 const StyledButton = styled.button`
@@ -66,17 +67,136 @@ const StyledButton = styled.button`
         box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
       }
     `}
+  ${props =>
+    props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
+    `
+      background: ${color.white};
+      color: ${color.primary};
+      border: 1px solid ${color.primary};
+      &:hover {
+          border-color: ${darken(0.05, color.primary)};
+        }
+        &:active {
+          box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+        }
+        &:focus {
+          box-shadow: ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+        }
+        &:focus:hover {
+          box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+        }
+      `}
+      ${props =>
+        props.appearance === APPEARANCES.SECONDARY &&
+        `
+        background: ${color.secondary};
+        color: ${color.white};
+        &:hover {
+            background: ${darken(0.05, color.secondary)};
+          }
+          &:active {
+            box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+          }
+          &:focus {
+            box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+          }
+          &:focus:hover {
+            box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+          }
+        `}
+      ${props =>
+        props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
+        `
+          background: ${color.white};
+          color: ${color.secondary};
+          border: 1px solid ${color.secondary};
+          &:hover {
+              border-color: ${darken(0.05, color.secondary)};
+            }
+            &:active {
+              box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+            }
+            &:focus {
+              box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+            }
+            &:focus:hover {
+              box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+            }
+          `}
+          ${props =>
+            props.appearance === APPEARANCES.TERTIARY &&
+            `
+            background: ${color.tertiary};
+            color: ${color.mediumdark};
+            &:hover {
+                background: ${darken(0.05, color.tertiary)};
+              }
+              &:active {
+                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+              }
+              &:focus {
+                box-shadow: ${rgba(color.tertiary, 0.4)} 0 1px 9px 2px;
+              }
+              &:focus:hover {
+                box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
+              }
+            `}
+          ${props =>
+            props.appearance === APPEARANCES.OUTLINE &&
+            `
+              background: ${color.white};
+              color: ${color.mediumdark};
+              border: 1px solid ${color.tertiary};
+              &:hover {
+                  border-color: ${darken(0.05, color.tertiary)};
+                  background-color: ${color.mediumlight}
+                }
+                &:active {
+                  box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+                }
+                &:focus {
+                  box-shadow: ${rgba(color.tertiary, 0.4)} 0 1px 9px 2px;
+                }
+                &:focus:hover {
+                  box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
+                }
+              `}
 `;
-
-/**
- Use this button as your main button in the page, If you don't pass the appearance props, the default will be primary. Children is the text within the button.
-**/
 
 export const Button = ({ children, ...props }) => {
   const innerText = <Text>{children}</Text>;
 
   return <StyledButton {...props}>{innerText}</StyledButton>;
 };
+
+const ButtonWrapper = styled.div`
+  ${props =>
+    props.margin === "0" &&
+    `
+    > button:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    > button:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    > button:not(:last-child):not(:first-child) {
+      border-radius: 0;
+    }
+  `}
+  ${props =>
+    props.margin !== "0" &&
+    `
+  > button:not(:first-child):not(:last-child) {
+    margin: 0 ${props.margin}px; 
+  }
+  `}
+`;
+
+export const ButtonGroup = ({ children, margin }) => (
+  <ButtonWrapper margin={margin}>{children}</ButtonWrapper>
+);
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
@@ -87,4 +207,11 @@ Button.propTypes = {
 Button.defaultProps = {
   appearance: APPEARANCES.PRIMARY,
   size: SIZES.MEDIUM
+};
+
+ButtonGroup.propTypes = {
+  margin: PropTypes.string
+};
+ButtonGroup.defaultProps = {
+  margin: "0"
 };
