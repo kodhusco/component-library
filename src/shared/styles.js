@@ -31,6 +31,24 @@ export const color = {
   warning: "#E69D00"
 };
 
+export const breakpoint = {
+  "screen-xl": "1920px",
+  "screen-lg": "1200px",
+  "screen-md": "992px",
+  "screen-sm": "768px",
+  "screen-xs": "480px",
+  "screen-xl-min": "1920px",
+  "screen-lg-min": "1200px",
+  "screen-md-min": "992px",
+  "screen-sm-min": "768px",
+  "screen-xs-min": "480px",
+  "screen-lg-max": "1919px",
+  "screen-md-max": "1199px",
+  "screen-sm-max": "991px",
+  "screen-xs-max": "767px",
+  "screen-xxs-max": "479px"
+};
+
 export const typography = {
   type: {
     primary: '"Rubik", "Helvetica Neue", Helvetica, Arial, sans-serif',

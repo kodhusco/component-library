@@ -1,7 +1,8 @@
 import * as styles from "./shared/styles";
 import * as global from "./shared/global";
+import { breakpoint } from "./shared/styles";
 
-export { styles, global };
+export { styles, global, breakpoint };
 
 export * from "./components/Button";
 export * from "./components/Type";
