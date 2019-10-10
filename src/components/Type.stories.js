@@ -89,13 +89,7 @@ LightHeadings.story = {
   }
 };
 
-const StyledSubtitle = styled(Subtitle)`
-  color: red;
-`;
-
-export const sub = () => (
-  <StyledSubtitle>Here goes the subtitle</StyledSubtitle>
-);
+export const sub = () => <Subtitle>Here goes the subtitle</Subtitle>;
 
 sub.story = {
   name: "Sub title",
