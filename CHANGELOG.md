@@ -1,3 +1,15 @@
+# v0.17.0 (Thu Oct 10 2019)
+
+#### 🚀  Enhancement
+
+- Add basic input and basic search input [#17](https://github.com/kodhusco/component-library/pull/17) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.16.0 (Thu Oct 10 2019)
 
 #### 🚀  Enhancement
