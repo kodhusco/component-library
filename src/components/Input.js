@@ -5,7 +5,7 @@ import "../style.css";
 
 const StyledInput = styled.input`
   font-size: 14px;
-  padding: 6px 6px;
+  padding: 8px 6px;
   border-radius: 3px;
   border: 1px solid ${color.mediumlight};
   color: ${color.darker};
