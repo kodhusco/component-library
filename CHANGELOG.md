@@ -1,3 +1,20 @@
+# v0.18.0 (Fri Oct 11 2019)
+
+#### 🚀  Enhancement
+
+- Basic slider [in Progress] [#18](https://github.com/kodhusco/component-library/pull/18) ([@kodhusco](https://github.com/kodhusco))
+
+#### ⚠️  Pushed to master
+
+- support for class properties  (kodhus@kodhus.com)
+
+#### Authors: 2
+
+- [@kodhusco](https://github.com/kodhusco)
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.17.0 (Thu Oct 10 2019)
 
 #### 🚀  Enhancement
