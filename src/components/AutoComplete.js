@@ -18,6 +18,7 @@ const Suggestions = styled.div`
   border-bottom-right-radius: 3px;
   overflow: hidden;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 999999;
 `;
 const SuggestionItem = styled.div`
   background-color: ${color.lightest};
