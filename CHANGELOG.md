@@ -1,3 +1,15 @@
+# v0.18.2 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- some-minor-text-improvements [#20](https://github.com/kodhusco/component-library/pull/20) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.18.1 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
