@@ -9,7 +9,7 @@ const SIZES = {
   MEDIUM: "medium"
 };
 
-const APPEARANCES = {
+export const APPEARANCES = {
   PRIMARY: "primary",
   PRIMARY_OUTLINE: "primaryOutline",
   SECONDARY: "secondary",
