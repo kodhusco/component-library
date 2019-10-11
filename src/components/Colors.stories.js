@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { storiesOf } from "@storybook/react";
 
 export default {
-  title: "Extra | Styles",
+  title: "Global | Styles",
   parameters: {
     componentSubtitle: "Design system colors"
   }
