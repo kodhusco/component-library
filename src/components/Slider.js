@@ -52,7 +52,7 @@ const StyledDiv = styled.div`
   bottom: 18px;
   font-size: ${typography.size.s2}px;
   display: none;
-  transform: translate(calc(${props => props.xPosition}px - 50%));
+  transform: translate(calc(${props => props.xPosition + 8}px - 50%));
   display: ${props => props.show && `block`};
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   padding: 5px 10px;
@@ -91,85 +91,161 @@ const Tooltip = ({ text, xPosition, show, children }) => {
 };
 
 export class Slider extends React.Component {
-  state = {
-    currentPosition: [0, 0],
-    firstHandledragging: false,
-    secondHanleDragging: false,
-    rootOffsetLeft: 0,
-    rootOffsetWidth: 0,
-    showFirstHandleTooltip: false,
-    showSecondHandleTooltip: false
-  };
   constructor(props) {
     super(props);
     this.sliderRef = React.createRef();
     this.firstHandleRef = React.createRef();
     this.secondHandleRef = React.createRef();
+    this.positions = [];
+    this.state = {
+      currentPosition: [0, 0],
+      firstHandledragging: false,
+      secondHanleDragging: false,
+      rootOffsetLeft: 0,
+      rootOffsetWidth: 0,
+      showFirstHandleTooltip: false,
+      showSecondHandleTooltip: false
+    };
   }
 
+  componentWillUnmount() {
+    this.firstHandleRef.current.removeEventListener(
+      "mousedown",
+      this.firstHandleMouseDown
+    );
+    this.secondHandleRef.current.removeEventListener(
+      "mousedown",
+      this.secondHandleMouseDown
+    );
+    document.removeEventListener("mousemove", this.onMouseMove);
+    document.removeEventListener("mouseuop", this.onMouseUp);
+  }
+
+  firstHandleMouseDown = e => {
+    this.setState({
+      firstHandledragging: true,
+      showFirstHandleTooltip: true
+    });
+  };
+
+  secondHandleMouseDown = e => {
+    this.setState({
+      secondHanleDragging: true,
+      showSecondHandleTooltip: true
+    });
+  };
+
+  onMouseMove = e => {
+    let pos = e.pageX - this.state.rootOffsetLeft - 8;
+    if (e.pageX < this.state.rootOffsetLeft + 8) pos = 0;
+    if (e.pageX > this.state.rootOffsetWidth + this.state.rootOffsetLeft)
+      pos = this.state.rootOffsetWidth;
+    if (this.state.firstHandledragging) {
+      const closest = this.positions.reduce(function(prev, curr) {
+        return Math.abs(curr - pos) < Math.abs(prev - pos) ? curr : prev;
+      });
+      if (this.props.range) {
+        this.setState(
+          {
+            currentPosition: [closest, this.state.currentPosition[1]],
+            showTooltip: true
+          },
+          () =>
+            this.props.onChange(
+              this.state.currentPosition.map(pos =>
+                Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+              )
+            )
+        );
+      } else {
+        this.setState({ currentPosition: [closest] }, () =>
+          this.props.onChange(
+            this.state.currentPosition.map(pos =>
+              Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+            )
+          )
+        );
+      }
+    } else if (this.state.secondHanleDragging) {
+      const closest = this.positions.reduce(function(prev, curr) {
+        return Math.abs(curr - pos) < Math.abs(prev - pos) ? curr : prev;
+      });
+      if (this.props.range) {
+        this.setState(
+          {
+            currentPosition: [this.state.currentPosition[0], closest]
+          },
+          () =>
+            this.props.onChange(
+              this.state.currentPosition.map(pos =>
+                Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+              )
+            )
+        );
+      } else {
+        this.setState({ currentPosition: [closest] }, () =>
+          this.props.onChange(
+            this.state.currentPosition.map(pos =>
+              Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+            )
+          )
+        );
+      }
+    }
+  };
+
+  onMouseUp = e => {
+    this.setState({
+      firstHandledragging: false,
+      secondHanleDragging: false,
+      showFirstHandleTooltip: false,
+      showSecondHandleTooltip: false
+    });
+  };
+
   componentDidMount() {
-    // get parent pageX
+    for (let i = 0; i < this.props.max; i++) {
+      this.positions.push(
+        Math.ceil(
+          (i / this.props.max) *
+            (this.sliderRef.current.offsetWidth +
+              this.sliderRef.current.offsetLeft)
+        )
+      );
+    }
     this.setState({
       rootOffsetLeft: this.sliderRef.current.offsetLeft,
       rootOffsetWidth: this.sliderRef.current.offsetWidth,
       currentPosition: Array.isArray(this.props.value)
         ? [
             Math.round(
-              (this.props.value[0] * this.sliderRef.current.offsetWidth) / 100
+              (this.props.value[0] * this.sliderRef.current.offsetWidth) /
+                this.props.max
             ),
             Math.round(
-              (this.props.value[1] * this.sliderRef.current.offsetWidth) / 100
+              (this.props.value[1] * this.sliderRef.current.offsetWidth) /
+                this.props.max
             )
           ]
-        : [(this.props.value * this.sliderRef.current.offsetWidth) / 100]
+        : [
+            (this.props.value * this.sliderRef.current.offsetWidth) /
+              this.props.max
+          ]
     });
 
-    this.firstHandleRef.current.addEventListener("mousedown", e => {
-      this.setState({
-        firstHandledragging: true,
-        showFirstHandleTooltip: true
-      });
-    });
+    this.firstHandleRef.current.addEventListener(
+      "mousedown",
+      this.firstHandleMouseDown
+    );
     if (this.props.range)
-      this.secondHandleRef.current.addEventListener("mousedown", e => {
-        this.setState({
-          secondHanleDragging: true,
-          showSecondHandleTooltip: true
-        });
-      });
-    document.addEventListener("mouseup", e => {
-      this.setState({
-        firstHandledragging: false,
-        secondHanleDragging: false,
-        showFirstHandleTooltip: false,
-        showSecondHandleTooltip: false
-      });
-    });
-    document.addEventListener("mousemove", e => {
-      let pos = e.pageX - this.state.rootOffsetLeft - 8;
-      if (e.pageX < this.state.rootOffsetLeft + 8) pos = 0;
-      if (e.pageX > this.state.rootOffsetWidth + this.state.rootOffsetLeft)
-        pos = this.state.rootOffsetWidth;
-      if (this.state.firstHandledragging) {
-        if (this.props.range) {
-          this.setState({
-            currentPosition: [pos, this.state.currentPosition[1]],
-            showTooltip: true
-          });
-        } else {
-          this.setState({ currentPosition: [pos] });
-        }
-      } else if (this.state.secondHanleDragging) {
-        if (this.props.range) {
-          this.setState({
-            currentPosition: [this.state.currentPosition[0], pos]
-          });
-        } else {
-          this.setState({ currentPosition: [pos] });
-        }
-      }
-    });
+      this.secondHandleRef.current.addEventListener(
+        "mousedown",
+        this.secondHandleMouseDown
+      );
+    document.addEventListener("mouseup", this.onMouseUp);
+    document.addEventListener("mousemove", this.onMouseMove);
   }
+
   render() {
     return (
       <SliderControl ref={this.sliderRef}>
@@ -189,7 +265,7 @@ export class Slider extends React.Component {
         <Tooltip
           text={Math.round(
             (this.state.currentPosition[0] / this.state.rootOffsetWidth) *
-              100 || 0
+              this.props.max || 0
           )}
           show={this.state.showFirstHandleTooltip}
           xPosition={this.state.currentPosition[0]}
@@ -203,7 +279,8 @@ export class Slider extends React.Component {
         {this.props.range && (
           <Tooltip
             text={Math.round(
-              (this.state.currentPosition[1] / this.state.rootOffsetWidth) * 100
+              (this.state.currentPosition[1] / this.state.rootOffsetWidth) *
+                this.props.max
             )}
             show={this.state.showSecondHandleTooltip}
             xPosition={this.state.currentPosition[1]}
