@@ -1,3 +1,15 @@
+# v0.18.1 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Basic autocomplete [#19](https://github.com/kodhusco/component-library/pull/19) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.18.0 (Fri Oct 11 2019)
 
 #### 🚀  Enhancement
