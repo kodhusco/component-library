@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "./Input";
 import styled from "styled-components";
-import { color } from "@storybook/theming";
+import { color } from "../shared/styles";
 import { typography } from "../shared/styles";
 
 const AutocompleteWrapper = styled.div`
