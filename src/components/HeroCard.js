@@ -51,13 +51,17 @@ const Content = styled.div`
     `
     @media (max-width: ${breakpoint["screen-sm"]}) {
       padding: 5px 10px;
-      width: calc(100% - 110px);
+      width: calc(100% - 120px);
     }
     `}
 `;
 
 const Title = styled.div`
   font-size: ${typography.size.m1}px;
+
+  @media (max-width: ${breakpoint["screen-sm"]}) {
+    font-size: ${typography.size.s3}px;
+  }
   font-weight: ${typography.weight.regular};
   line-height: 1;
   white-space: nowrap;
