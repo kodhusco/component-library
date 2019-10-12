@@ -9,7 +9,8 @@ export const ICONS = {
   LIST: "list",
   DOOR: "door",
   MONEY: "money",
-  CROP: "crop"
+  CROP: "crop",
+  LAYOUT: "layout-outline"
 };
 
 const StyledIcon = ({ type, ...props }) => {
