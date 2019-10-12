@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { color } from "../shared/styles";
-// import "../style.css";
+import { Icon } from "./Icon";
 
 const StyledInput = styled.input`
   font-size: 14px;
@@ -17,11 +17,6 @@ const StyledInput = styled.input`
 const StyledInputWrapper = styled.span`
   position: relative;
 `;
-const StyledIcon = ({ type, ...props }) => {
-  return <span className={`icon-${type}`} {...props}></span>;
-};
-
-const Icon = ({ type, ...props }) => <StyledIcon type={type} {...props} />;
 
 export const Input = ({ ...props }) => <StyledInput {...props} />;
 
