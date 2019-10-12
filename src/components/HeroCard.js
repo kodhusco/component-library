@@ -38,6 +38,7 @@ const Image = styled.div`
     props.type === MOBILE_TYPE.LIST &&
     `
     @media (max-width: ${breakpoint["screen-sm"]}) {
+      flex-shrink: 0;
       width: 100px;
       height: 100px;
     }
@@ -50,6 +51,7 @@ const Content = styled.div`
     `
     @media (max-width: ${breakpoint["screen-sm"]}) {
       padding: 5px 10px;
+      width: calc(100% - 90px);
     }
     `}
 `;
