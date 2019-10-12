@@ -78,7 +78,7 @@ export const HeroCard = ({ title, image, as, children, ...props }) => {
 
 HeroCard.propTypes = {
   title: PropTypes.string,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   as: PropTypes.oneOf(Object.values(MOBILE_TYPE))
 };
 

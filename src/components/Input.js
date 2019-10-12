@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { color } from "../shared/styles";
-import "../style.css";
+// import "../style.css";
 
 const StyledInput = styled.input`
   font-size: 14px;

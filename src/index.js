@@ -8,3 +8,6 @@ export * from "./components/Button";
 export * from "./components/Type";
 export * from "./components/Card";
 export * from "./components/HeroCard";
+export * from "./components/Slider";
+export * from "./components/Input";
+export * from "./components/AutoComplete";
