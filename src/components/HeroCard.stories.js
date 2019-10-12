@@ -10,12 +10,15 @@ export default {
 };
 
 export const defaultCard = () => (
-  <HeroCard
-    title="Gothenburg"
-    image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
-  >
-    something nice
-  </HeroCard>
+  <div style={{ display: "flex", width: "100%" }}>
+    <HeroCard
+      title="Gothenburg is a great city and something of a kind"
+      image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
+      style={{ flexBasis: "25%" }}
+    >
+      something nice
+    </HeroCard>
+  </div>
 );
 
 defaultCard.story = {
