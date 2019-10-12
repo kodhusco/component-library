@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
   border: 1px solid #eee;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   ${props =>
-    props.as === MOBILE_TYPE.LIST &&
+    props.type === MOBILE_TYPE.LIST &&
     `
   @media (max-width: ${breakpoint["screen-sm"]}) {
     display: flex;
@@ -35,7 +35,7 @@ const Image = styled.div`
     border-bottom: 1px solid #ddd;
   `}
   ${props =>
-    props.as === MOBILE_TYPE.LIST &&
+    props.type === MOBILE_TYPE.LIST &&
     `
     @media (max-width: ${breakpoint["screen-sm"]}) {
       width: 100px;
@@ -46,7 +46,7 @@ const Image = styled.div`
 const Content = styled.div`
   padding: 16px;
   ${props =>
-    props.as === MOBILE_TYPE.LIST &&
+    props.type === MOBILE_TYPE.LIST &&
     `
     @media (max-width: ${breakpoint["screen-sm"]}) {
       padding: 5px 10px;
@@ -64,11 +64,11 @@ const Children = styled.div`
   margin-top: 24px;
 `;
 
-export const HeroCard = ({ title, image, as, children, ...props }) => {
+export const HeroCard = ({ title, image, type, children, className }) => {
   return (
-    <StyledDiv className={props.className} as={as}>
-      <Image as={as} image={image}></Image>
-      <Content as={as}>
+    <StyledDiv type={type} className={className}>
+      <Image image={image} type={type}></Image>
+      <Content type={type}>
         <Title>{title}</Title>
         <Children>{children}</Children>
       </Content>
@@ -79,9 +79,9 @@ export const HeroCard = ({ title, image, as, children, ...props }) => {
 HeroCard.propTypes = {
   title: PropTypes.string,
   image: PropTypes.string,
-  as: PropTypes.oneOf(Object.values(MOBILE_TYPE))
+  type: PropTypes.oneOf(Object.values(MOBILE_TYPE))
 };
 
 HeroCard.defaultTypes = {
-  as: MOBILE_TYPE.CARD
+  type: MOBILE_TYPE.CARD
 };
