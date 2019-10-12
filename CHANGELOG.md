@@ -1,3 +1,15 @@
+# v0.21.3 (Sat Oct 12 2019)
+
+#### 🐛  Bug Fix
+
+- patch list view [#27](https://github.com/kodhusco/component-library/pull/27) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.2 (Sat Oct 12 2019)
 
 #### 🐛  Bug Fix
