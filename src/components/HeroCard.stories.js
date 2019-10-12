@@ -25,7 +25,7 @@ defaultCard.story = {
 export const CardAsList = () => (
   <HeroCard
     title="Gothenburg"
-    as="list"
+    type="list"
     image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
   >
     something nice
