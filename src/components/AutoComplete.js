@@ -9,9 +9,6 @@ const AutocompleteWrapper = styled.div`
 `;
 
 const Suggestions = styled.div`
-  position: absolute;
-  left: 0;
-  top: 34px;
   border: 1px solid ${color.mediumlight};
   width: 100%;
   border-bottom-left-radius: 3px;
@@ -33,6 +30,7 @@ const SuggestionItem = styled.div`
   &:hover {
     background-color: ${color.light};
   }
+  text-align-left;
 `;
 
 export class AutoComplete extends React.Component {
@@ -66,18 +64,32 @@ export class AutoComplete extends React.Component {
       this.props.onSelect(value)
     );
   }
+
   render() {
+    const { children } = this.props;
+
     return (
       <AutocompleteWrapper
         style={this.props.style}
         className={this.props.className}
       >
-        <Input
-          placeholder="Autocomplete input..."
-          value={this.state.value}
-          onClick={e => this.suggest(e.target.value)}
-          onChange={e => this.suggest(e.target.value)}
-        />
+        {children ? (
+          <Input
+            placeholder="Autocomplete input..."
+            value={this.state.value}
+            onClick={e => this.suggest(e.target.value)}
+            onChange={e => this.suggest(e.target.value)}
+            {...children.props}
+          />
+        ) : (
+          <Input
+            placeholder="Autocomplete input..."
+            value={this.state.value}
+            onClick={e => this.suggest(e.target.value)}
+            onChange={e => this.suggest(e.target.value)}
+          />
+        )}
+
         {this.state.showSuggestions && (
           <Suggestions>
             {this.state.suggestions.map((item, key) => (
