@@ -1,3 +1,15 @@
+# v0.21.1 (Sat Oct 12 2019)
+
+#### 🐛  Bug Fix
+
+- change as to type cause maybe as is reserved [#25](https://github.com/kodhusco/component-library/pull/25) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.0 (Sat Oct 12 2019)
 
 #### 🚀  Enhancement
