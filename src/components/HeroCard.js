@@ -51,7 +51,7 @@ const Content = styled.div`
     `
     @media (max-width: ${breakpoint["screen-sm"]}) {
       padding: 5px 10px;
-      width: calc(100% - 90px);
+      width: calc(100% - 110px);
     }
     `}
 `;
