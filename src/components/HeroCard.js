@@ -44,7 +44,7 @@ const Image = styled.div`
     `}
 `;
 const Content = styled.div`
-  padding: 16px;
+  padding: 16px 8px;
   ${props =>
     props.type === MOBILE_TYPE.LIST &&
     `
@@ -58,15 +58,25 @@ const Title = styled.div`
   font-size: ${typography.size.m1}px;
   font-weight: ${typography.weight.regular};
   line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Children = styled.div`
-  margin-top: 24px;
+  margin-top: 16px;
 `;
 
-export const HeroCard = ({ title, image, type, children, className }) => {
+export const HeroCard = ({
+  title,
+  image,
+  type,
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <StyledDiv type={type} className={className}>
+    <StyledDiv type={type} className={className} {...props}>
       <Image image={image} type={type}></Image>
       <Content type={type}>
         <Title>{title}</Title>
