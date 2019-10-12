@@ -1,3 +1,16 @@
+# v0.18.3 (Sat Oct 12 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- add new modules and update to include styles.css  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.18.2 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
