@@ -1,3 +1,15 @@
+# v0.21.2 (Sat Oct 12 2019)
+
+#### 🐛  Bug Fix
+
+- Truncate title [#26](https://github.com/kodhusco/component-library/pull/26) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.1 (Sat Oct 12 2019)
 
 #### 🐛  Bug Fix
