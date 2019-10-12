@@ -1,6 +1,6 @@
 {
   "name": "kodhus-design-library",
-  "version": "0.18.3",
+  "version": "0.19.0",
   "dependencies": {
     "@babel/cli": "^7.6.2",
     "polished": "^3.4.1",
