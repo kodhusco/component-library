@@ -1,3 +1,15 @@
+# v0.20.0 (Sat Oct 12 2019)
+
+#### 🚀  Enhancement
+
+- custom autocomplete [#23](https://github.com/kodhusco/component-library/pull/23) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.19.1 (Sat Oct 12 2019)
 
 #### 🐛  Bug Fix
