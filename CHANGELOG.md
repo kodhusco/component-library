@@ -1,3 +1,15 @@
+# v0.19.0 (Sat Oct 12 2019)
+
+#### 🚀  Enhancement
+
+- remove moving static files [#21](https://github.com/kodhusco/component-library/pull/21) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.18.3 (Sat Oct 12 2019)
 
 #### ⚠️  Pushed to master
