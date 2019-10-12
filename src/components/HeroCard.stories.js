@@ -10,7 +10,7 @@ export default {
 };
 
 export const defaultCard = () => (
-  <div style={{ display: "flex", width: "100%" }}>
+  <div style={{ display: "flex", width: "100%", flexWrap: "wrap" }}>
     <HeroCard
       title="Gothenburg is a great city and something of a kind"
       image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
@@ -26,13 +26,16 @@ defaultCard.story = {
 };
 
 export const CardAsList = () => (
-  <HeroCard
-    title="Gothenburg"
-    type="list"
-    image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
-  >
-    something nice
-  </HeroCard>
+  <div style={{ display: "flex", width: "100%", flexWrap: "wrap" }}>
+    <HeroCard
+      title="Gothenburg is a great city and something of a kind"
+      image="https://blogs.studyinsweden.se/wp-content/uploads/2019/06/per_pixel_petersson-gothenburg-5230-1440x700.jpg"
+      style={{ flexBasis: "25%" }}
+      type="list"
+    >
+      something nice
+    </HeroCard>
+  </div>
 );
 
 CardAsList.story = {
