@@ -22,6 +22,11 @@ const Text = styled.span`
   display: inline-block;
   vertical-align: top;
   font-weight: ${typography.weight.regular};
+  display: flex;
+  align-items: center;
+  > *:last-child {
+    margin-left: 8px;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -164,7 +169,13 @@ const StyledButton = styled.button`
 `;
 
 export const Button = ({ children, ...props }) => {
-  const innerText = <Text>{children}</Text>;
+  const innerText = (
+    <Text>
+      {React.Children.map(children, child => (
+        <span>{child}</span>
+      ))}
+    </Text>
+  );
 
   return <StyledButton {...props}>{innerText}</StyledButton>;
 };

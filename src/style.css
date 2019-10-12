@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?6xd2ck');
-  src:  url('fonts/icomoon.eot?6xd2ck#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?6xd2ck') format('truetype'),
-    url('fonts/icomoon.woff?6xd2ck') format('woff'),
-    url('fonts/icomoon.svg?6xd2ck#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?3z9z8j');
+  src:  url('fonts/icomoon.eot?3z9z8j#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?3z9z8j') format('truetype'),
+    url('fonts/icomoon.woff?3z9z8j') format('woff'),
+    url('fonts/icomoon.svg?3z9z8j#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,6 +28,9 @@
 .icon-search:before {
   content: "\e909";
 }
+.icon-layout-outline:before {
+  content: "\e90a";
+}
 .icon-user-add:before {
   content: "\e908";
 }
@@ -36,6 +39,9 @@
 }
 .icon-creditcard:before {
   content: "\e903";
+}
+.icon-filter_list:before {
+  content: "\e90b";
 }
 .icon-bathtub:before {
   content: "\e906";

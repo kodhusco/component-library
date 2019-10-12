@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup } from "./Button";
+import { Icon } from "./Icon";
 
 export default {
   title: "Components | Button",
@@ -29,6 +30,18 @@ export const primaryButton = () => (
     </div>
     <div style={{ marginTop: 10 }}>
       <Button appearance="outline">Outline button</Button>
+    </div>
+    <div style={{ marginTop: 10 }}>
+      <Button>
+        <Icon type="search" />
+        Search
+      </Button>
+    </div>
+    <div style={{ marginTop: 10 }}>
+      <Button>
+        Search
+        <Icon type="search" />
+      </Button>
     </div>
   </div>
 );
