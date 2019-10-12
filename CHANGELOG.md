@@ -1,3 +1,15 @@
+# v0.21.0 (Sat Oct 12 2019)
+
+#### 🚀  Enhancement
+
+- adding small set of icons [#24](https://github.com/kodhusco/component-library/pull/24) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.20.0 (Sat Oct 12 2019)
 
 #### 🚀  Enhancement
