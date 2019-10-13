@@ -169,7 +169,11 @@ export class Slider extends PureComponent {
           () =>
             this.props.onChange(
               this.state.currentPosition.map(pos =>
-                Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+                Math.round(
+                  (pos / this.state.rootOffsetWidth) *
+                    (this.props.max - this.props.min) +
+                    this.props.min || 0
+                )
               )
             )
         );
@@ -179,7 +183,11 @@ export class Slider extends PureComponent {
           () =>
             this.props.onChange(
               this.state.currentPosition.map(pos =>
-                Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+                Math.round(
+                  (this.state.currentPosition[0] / this.state.rootOffsetWidth) *
+                    (this.props.max - this.props.min) +
+                    this.props.min || 0
+                )
               )
             )
         );
@@ -191,22 +199,35 @@ export class Slider extends PureComponent {
       if (this.props.range) {
         this.setState(
           {
-            currentPosition: [this.state.currentPosition[0], closest]
+            currentPosition: [
+              this.state.currentPosition[0],
+              closest - this.state.rootOffsetLeft
+            ]
           },
           () =>
             this.props.onChange(
               this.state.currentPosition.map(pos =>
-                Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+                Math.round(
+                  (pos / this.state.rootOffsetWidth) *
+                    (this.props.max - this.props.min) +
+                    this.props.min || 0
+                )
               )
             )
         );
       } else {
-        this.setState({ currentPosition: [closest] }, () =>
-          this.props.onChange(
-            this.state.currentPosition.map(pos =>
-              Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+        this.setState(
+          { currentPosition: [closest - this.state.rootOffsetLeft] },
+          () =>
+            this.props.onChange(
+              this.state.currentPosition.map(pos =>
+                Math.round(
+                  (pos / this.state.rootOffsetWidth) *
+                    (this.props.max - this.props.min) +
+                    this.props.min || 0
+                )
+              )
             )
-          )
         );
       }
     }
@@ -237,17 +258,20 @@ export class Slider extends PureComponent {
       currentPosition: Array.isArray(this.props.value)
         ? [
             Math.round(
-              (this.props.value[0] * this.sliderRef.current.offsetWidth) /
+              ((this.props.value[0] - this.props.min) *
+                this.sliderRef.current.offsetWidth) /
                 (this.props.max - this.props.min)
             ),
             Math.round(
-              (this.props.value[1] * this.sliderRef.current.offsetWidth) /
+              ((this.props.value[1] - this.props.min) *
+                this.sliderRef.current.offsetWidth) /
                 (this.props.max - this.props.min)
             )
           ]
         : [
             Math.round(
-              (this.props.value * this.sliderRef.current.offsetWidth) /
+              ((this.props.value - this.props.min) *
+                this.sliderRef.current.offsetWidth) /
                 (this.props.max - this.props.min)
             )
           ]
