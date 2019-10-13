@@ -148,8 +148,7 @@ export class Slider extends PureComponent {
     });
   };
 
-  onMouseMove = e => {
-    let pos = e.pageX;
+  updateSlider(pos) {
     // if (e.pageX < this.state.rootOffsetLeft + 8) pos = 0;
     // if (e.pageX > this.state.rootOffsetWidth + this.state.rootOffsetLeft)
     //   pos = this.state.rootOffsetWidth;
@@ -168,12 +167,13 @@ export class Slider extends PureComponent {
           },
           () =>
             this.props.onChange(
-              this.state.currentPosition.map(pos =>
-                Math.round(
-                  (pos / this.state.rootOffsetWidth) *
-                    (this.props.max - this.props.min) +
-                    this.props.min || 0
-                )
+              this.state.currentPosition.map(
+                pos =>
+                  Math.round(
+                    ((pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min) +
+                      this.props.min || 0) / this.props.step
+                  ) * this.props.step
               )
             )
         );
@@ -182,12 +182,13 @@ export class Slider extends PureComponent {
           { currentPosition: [closest - this.state.rootOffsetLeft] },
           () =>
             this.props.onChange(
-              this.state.currentPosition.map(pos =>
-                Math.round(
-                  (this.state.currentPosition[0] / this.state.rootOffsetWidth) *
-                    (this.props.max - this.props.min) +
-                    this.props.min || 0
-                )
+              this.state.currentPosition.map(
+                pos =>
+                  Math.round(
+                    ((pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min) +
+                      this.props.min || 0) / this.props.step
+                  ) * this.props.step
               )
             )
         );
@@ -206,12 +207,13 @@ export class Slider extends PureComponent {
           },
           () =>
             this.props.onChange(
-              this.state.currentPosition.map(pos =>
-                Math.round(
-                  (pos / this.state.rootOffsetWidth) *
-                    (this.props.max - this.props.min) +
-                    this.props.min || 0
-                )
+              this.state.currentPosition.map(
+                pos =>
+                  Math.round(
+                    ((pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min) +
+                      this.props.min || 0) / this.props.step
+                  ) * this.props.step
               )
             )
         );
@@ -220,17 +222,23 @@ export class Slider extends PureComponent {
           { currentPosition: [closest - this.state.rootOffsetLeft] },
           () =>
             this.props.onChange(
-              this.state.currentPosition.map(pos =>
-                Math.round(
-                  (pos / this.state.rootOffsetWidth) *
-                    (this.props.max - this.props.min) +
-                    this.props.min || 0
-                )
+              this.state.currentPosition.map(
+                pos =>
+                  Math.round(
+                    ((pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min) +
+                      this.props.min || 0) / this.props.step
+                  ) * this.props.step
               )
             )
         );
       }
     }
+  }
+
+  onMouseMove = e => {
+    let pos = e.pageX;
+    this.updateSlider(pos);
   };
 
   onMouseUp = e => {
@@ -243,7 +251,11 @@ export class Slider extends PureComponent {
   };
 
   componentDidMount() {
-    for (let i = 0; i <= this.props.max - this.props.min; i++) {
+    for (
+      let i = 0;
+      i <= this.props.max - this.props.min;
+      i += this.props.step
+    ) {
       this.positions.push(
         Math.round(
           (i / (this.props.max - this.props.min)) *
@@ -305,91 +317,9 @@ export class Slider extends PureComponent {
     });
     document.addEventListener("mouseup", this.onMouseUp);
     document.addEventListener("mousemove", this.onMouseMove);
-    document.addEventListener("touchmove", e => {
-      let pos = e.touches[0].pageX;
-      let closest = this.positions.reduce(function(prev, curr) {
-        return Math.abs(curr - pos) < Math.abs(prev - pos) ? curr : prev;
-      });
-      if (this.state.firstHandledragging) {
-        if (this.props.range) {
-          this.setState(
-            {
-              currentPosition: [
-                closest - this.state.rootOffsetLeft,
-                this.state.currentPosition[1]
-              ],
-              showFirstHandleTooltip: true
-            },
-            () => {
-              this.props.onChange(
-                this.state.currentPosition.map(pos =>
-                  Math.round(
-                    (pos / this.state.rootOffsetWidth) *
-                      (this.props.max - this.props.min)
-                  )
-                )
-              );
-            }
-          );
-        } else {
-          this.setState(
-            {
-              currentPosition: [closest - this.state.rootOffsetLeft],
-              showFirstHandleTooltip: true
-            },
-            () => {
-              this.props.onChange(
-                this.state.currentPosition.map(pos =>
-                  Math.round(
-                    (pos / this.state.rootOffsetWidth) *
-                      (this.props.max - this.props.min)
-                  )
-                )
-              );
-            }
-          );
-        }
-      } else if (this.state.secondHanleDragging) {
-        if (this.props.range) {
-          this.setState(
-            {
-              currentPosition: [
-                this.state.currentPosition[0],
-                closest - this.state.rootOffsetLeft
-              ],
-              showSecondHandleTooltip: true
-            },
-            () => {
-              this.props.onChange(
-                this.state.currentPosition.map(pos =>
-                  Math.round(
-                    (pos / this.state.rootOffsetWidth) *
-                      (this.props.max - this.props.min)
-                  )
-                )
-              );
-            }
-          );
-        } else {
-          this.setState(
-            {
-              currentPosition: [closest - this.state.rootOffsetLeft],
-              showSecondHandleTooltip: true
-            },
-            () => {
-              this.props.onChange(
-                this.state.currentPosition.map(pos =>
-                  Math.round(
-                    (pos / this.state.rootOffsetWidth) *
-                      (this.props.max - this.props.min)
-                  )
-                )
-              );
-            }
-          );
-        }
-      }
-    });
+    document.addEventListener("touchmove", e =>
+      this.updateSlider(e.touches[0].pageX)
+    );
   }
 
   render() {
@@ -410,11 +340,13 @@ export class Slider extends PureComponent {
           }
         ></SliderProgress>
         <Tooltip
-          text={Math.round(
-            (this.state.currentPosition[0] / this.state.rootOffsetWidth) *
-              (this.props.max - this.props.min) +
-              this.props.min || 0
-          )}
+          text={
+            Math.round(
+              ((this.state.currentPosition[0] / this.state.rootOffsetWidth) *
+                (this.props.max - this.props.min) +
+                this.props.min || 0) / this.props.step
+            ) * this.props.step
+          }
           show={this.state.showFirstHandleTooltip}
           xPosition={this.state.currentPosition[0] - 7}
         >
@@ -426,11 +358,13 @@ export class Slider extends PureComponent {
         </Tooltip>
         {this.props.range && (
           <Tooltip
-            text={Math.round(
-              (this.state.currentPosition[1] / this.state.rootOffsetWidth) *
-                (this.props.max - this.props.min) +
-                this.props.min || 0
-            )}
+            text={
+              Math.round(
+                ((this.state.currentPosition[1] / this.state.rootOffsetWidth) *
+                  (this.props.max - this.props.min) +
+                  this.props.min || 0) / this.props.step
+              ) * this.props.step
+            }
             show={this.state.showSecondHandleTooltip}
             xPosition={this.state.currentPosition[1] - 7}
           >
@@ -447,9 +381,11 @@ export class Slider extends PureComponent {
 }
 
 Slider.propTypes = {
-  min: PropTypes.number
+  min: PropTypes.number,
+  step: PropTypes.number
 };
 
 Slider.defaultProps = {
-  min: 0
+  min: 0,
+  step: 1
 };
