@@ -1,3 +1,15 @@
+# v0.21.11 (Sun Oct 13 2019)
+
+#### 🐛  Bug Fix
+
+- fix box-sizing slider [#30](https://github.com/kodhusco/component-library/pull/30) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.10 (Sun Oct 13 2019)
 
 #### 🐛  Bug Fix
