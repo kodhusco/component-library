@@ -9,8 +9,8 @@ const SliderBar = styled.div`
   border-radius: 2px;
 `;
 const SliderHandle = styled.span`
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   display: inline-block;
   position: absolute;
   border-radius: 50%;
@@ -21,7 +21,7 @@ const SliderHandle = styled.span`
     `
     border-color: ${color[props.appreance]}
   `}
-  top: -6px;
+  top: -2px;
   transform: translateX(${props => props.xPosition}px);
   cursor: pointer;
 `;
@@ -31,7 +31,7 @@ const SliderProgress = styled.div`
   width: 100%;
   transform: scaleX(${props => props.xScale});
   left: ${props => props.startPosition}px;
-  top: 0;
+  top: 3px;
   transform-origin: 0;
   background-color: ${color.primary};
   ${props =>
@@ -43,6 +43,10 @@ const SliderProgress = styled.div`
 `;
 const SliderControl = styled.div`
   position: relative;
+  width: 100%;
+  height: 12px;
+  margin: 12px 12px 8px 12px;
+  padding: 4px 0;
 `;
 
 const StyledDiv = styled.div`
@@ -109,14 +113,6 @@ export class Slider extends React.Component {
   }
 
   componentWillUnmount() {
-    this.firstHandleRef.current.removeEventListener(
-      "mousedown",
-      this.firstHandleMouseDown
-    );
-    this.secondHandleRef.current.removeEventListener(
-      "mousedown",
-      this.secondHandleMouseDown
-    );
     document.removeEventListener("mousemove", this.onMouseMove);
     document.removeEventListener("mouseuop", this.onMouseUp);
   }
@@ -136,10 +132,10 @@ export class Slider extends React.Component {
   };
 
   onMouseMove = e => {
-    let pos = e.pageX - this.state.rootOffsetLeft - 8;
-    if (e.pageX < this.state.rootOffsetLeft + 8) pos = 0;
-    if (e.pageX > this.state.rootOffsetWidth + this.state.rootOffsetLeft)
-      pos = this.state.rootOffsetWidth;
+    let pos = e.pageX;
+    // if (e.pageX < this.state.rootOffsetLeft + 8) pos = 0;
+    // if (e.pageX > this.state.rootOffsetWidth + this.state.rootOffsetLeft)
+    //   pos = this.state.rootOffsetWidth;
     if (this.state.firstHandledragging) {
       const closest = this.positions.reduce(function(prev, curr) {
         return Math.abs(curr - pos) < Math.abs(prev - pos) ? curr : prev;
@@ -158,12 +154,14 @@ export class Slider extends React.Component {
             )
         );
       } else {
-        this.setState({ currentPosition: [closest] }, () =>
-          this.props.onChange(
-            this.state.currentPosition.map(pos =>
-              Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+        this.setState(
+          { currentPosition: [closest - this.state.rootOffsetLeft - 7] },
+          () =>
+            this.props.onChange(
+              this.state.currentPosition.map(pos =>
+                Math.round((pos / this.state.rootOffsetWidth) * this.props.max)
+              )
             )
-          )
         );
       }
     } else if (this.state.secondHanleDragging) {
@@ -204,12 +202,12 @@ export class Slider extends React.Component {
   };
 
   componentDidMount() {
-    for (let i = 0; i < this.props.max; i++) {
+    for (let i = 0; i <= this.props.max - this.props.min; i++) {
       this.positions.push(
-        Math.ceil(
-          (i / this.props.max) *
-            (this.sliderRef.current.offsetWidth +
-              this.sliderRef.current.offsetLeft)
+        Math.round(
+          (i / (this.props.max - this.props.min)) *
+            this.sliderRef.current.offsetWidth +
+            this.sliderRef.current.offsetLeft
         )
       );
     }
@@ -220,16 +218,18 @@ export class Slider extends React.Component {
         ? [
             Math.round(
               (this.props.value[0] * this.sliderRef.current.offsetWidth) /
-                this.props.max
-            ),
+                (this.props.max - this.props.min)
+            ) - 7,
             Math.round(
               (this.props.value[1] * this.sliderRef.current.offsetWidth) /
-                this.props.max
-            )
+                (this.props.max - this.props.min)
+            ) - 7
           ]
         : [
-            (this.props.value * this.sliderRef.current.offsetWidth) /
-              this.props.max
+            Math.round(
+              (this.props.value * this.sliderRef.current.offsetWidth) /
+                (this.props.max - this.props.min)
+            ) - 7
           ]
     });
 
@@ -244,6 +244,29 @@ export class Slider extends React.Component {
       );
     document.addEventListener("mouseup", this.onMouseUp);
     document.addEventListener("mousemove", this.onMouseMove);
+    document.addEventListener("touchmove", e => {
+      let pos = e.touches[0].pageX;
+      let closest = this.positions.reduce(function(prev, curr) {
+        return Math.abs(curr - pos) < Math.abs(prev - pos) ? curr : prev;
+      });
+      this.setState(
+        {
+          currentPosition: [closest - this.state.rootOffsetLeft - 7],
+          showFirstHandleTooltip: true
+        },
+        () => {
+          console.log("currentPosition", this.state.currentPosition[0]);
+          this.props.onChange(
+            this.state.currentPosition.map(pos =>
+              Math.round(
+                (pos / this.state.rootOffsetWidth) *
+                  (this.props.max - this.props.min)
+              )
+            )
+          );
+        }
+      );
+    });
   }
 
   render() {
@@ -259,13 +282,14 @@ export class Slider extends React.Component {
               ? (this.state.currentPosition[1] -
                   this.state.currentPosition[0]) /
                 this.state.rootOffsetWidth
-              : this.state.currentPosition / this.state.rootOffsetWidth
+              : this.state.currentPosition[0] / this.state.rootOffsetWidth
           }
         ></SliderProgress>
         <Tooltip
           text={Math.round(
             (this.state.currentPosition[0] / this.state.rootOffsetWidth) *
-              this.props.max || 0
+              (this.props.max - this.props.min) +
+              this.props.min || 0
           )}
           show={this.state.showFirstHandleTooltip}
           xPosition={this.state.currentPosition[0]}
