@@ -21,9 +21,9 @@ const Info = styled.div`
 
 export const Colors = () => (
   <div style={{ display: "flex", flexWrap: "wrap", marginTop: 40 }}>
-    {Object.keys(color).map(key => (
-      <Color>
-        <ColorCard style={{ background: color[key] }}></ColorCard>
+    {Object.keys(color).map((value, index) => (
+      <Color key={index}>
+        <ColorCard style={{ background: color[value] }}></ColorCard>
         <Info>
           {key}
           <br />
@@ -37,7 +37,7 @@ export const Colors = () => (
               borderRadius: 3
             }}
           >
-            {color[key]}
+            {color[value]}
           </code>
         </Info>
       </Color>
