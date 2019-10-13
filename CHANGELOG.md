@@ -1,3 +1,16 @@
+# v0.21.8 (Sun Oct 13 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- visualize filter_list icon  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.7 (Sat Oct 12 2019)
 
 #### ⚠️  Pushed to master
