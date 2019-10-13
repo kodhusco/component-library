@@ -1,3 +1,15 @@
+# v0.21.9 (Sun Oct 13 2019)
+
+#### 🐛  Bug Fix
+
+- Slider touch and fix colors [#28](https://github.com/kodhusco/component-library/pull/28) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.8 (Sun Oct 13 2019)
 
 #### ⚠️  Pushed to master
