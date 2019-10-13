@@ -22,15 +22,19 @@ export const defaultSlider = () => (
       />
       <span>5</span>
     </div>
-    {/* <div style={{ marginTop: 30 }}>
-      <Slider
-        range
-        value={[0, 10]}
-        appreance="secondary"
-        max={20}
-        onChange={value => console.log(value)}
-      />
-    </div> */}
+    <div style={{ marginTop: 30 }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <span>0</span>
+        <Slider
+          range
+          value={[0, 10]}
+          appreance="secondary"
+          max={20}
+          onChange={value => console.log(value)}
+        />
+        <span>20</span>
+      </div>
+    </div>
   </div>
 );
 

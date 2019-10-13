@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { color, typography } from "../shared/styles";
+import PropTypes from "prop-types";
 
 const SliderBar = styled.div`
   width: 100%;
@@ -96,7 +97,7 @@ const Tooltip = ({ text, xPosition, show, children }) => {
   );
 };
 
-export class Slider extends React.Component {
+export class Slider extends PureComponent {
   constructor(props) {
     super(props);
     this.sliderRef = React.createRef();
@@ -126,7 +127,21 @@ export class Slider extends React.Component {
     });
   };
 
+  firstHandleTouchStart = e => {
+    this.setState({
+      firstHandledragging: true,
+      showFirstHandleTooltip: true
+    });
+  };
+
   secondHandleMouseDown = e => {
+    this.setState({
+      secondHanleDragging: true,
+      showSecondHandleTooltip: true
+    });
+  };
+
+  secondHandleTouchStart = e => {
     this.setState({
       secondHanleDragging: true,
       showSecondHandleTooltip: true
@@ -145,7 +160,10 @@ export class Slider extends React.Component {
       if (this.props.range) {
         this.setState(
           {
-            currentPosition: [closest, this.state.currentPosition[1]],
+            currentPosition: [
+              closest - this.state.rootOffsetLeft,
+              this.state.currentPosition[1]
+            ],
             showTooltip: true
           },
           () =>
@@ -157,7 +175,7 @@ export class Slider extends React.Component {
         );
       } else {
         this.setState(
-          { currentPosition: [closest - this.state.rootOffsetLeft - 7] },
+          { currentPosition: [closest - this.state.rootOffsetLeft] },
           () =>
             this.props.onChange(
               this.state.currentPosition.map(pos =>
@@ -221,17 +239,17 @@ export class Slider extends React.Component {
             Math.round(
               (this.props.value[0] * this.sliderRef.current.offsetWidth) /
                 (this.props.max - this.props.min)
-            ) - 7,
+            ),
             Math.round(
               (this.props.value[1] * this.sliderRef.current.offsetWidth) /
                 (this.props.max - this.props.min)
-            ) - 7
+            )
           ]
         : [
             Math.round(
               (this.props.value * this.sliderRef.current.offsetWidth) /
                 (this.props.max - this.props.min)
-            ) - 7
+            )
           ]
     });
 
@@ -239,11 +257,28 @@ export class Slider extends React.Component {
       "mousedown",
       this.firstHandleMouseDown
     );
-    if (this.props.range)
+    this.firstHandleRef.current.addEventListener(
+      "touchstart",
+      this.firstHandleTouchStart
+    );
+    if (this.props.range) {
       this.secondHandleRef.current.addEventListener(
         "mousedown",
         this.secondHandleMouseDown
       );
+      this.secondHandleRef.current.addEventListener(
+        "touchstart",
+        this.secondHandleTouchStart
+      );
+    }
+    document.addEventListener("touchend", () => {
+      this.setState({
+        firstHandledragging: false,
+        secondHanleDragging: false,
+        showFirstHandleTooltip: false,
+        showSecondHandleTooltip: false
+      });
+    });
     document.addEventListener("mouseup", this.onMouseUp);
     document.addEventListener("mousemove", this.onMouseMove);
     document.addEventListener("touchmove", e => {
@@ -251,23 +286,85 @@ export class Slider extends React.Component {
       let closest = this.positions.reduce(function(prev, curr) {
         return Math.abs(curr - pos) < Math.abs(prev - pos) ? curr : prev;
       });
-      this.setState(
-        {
-          currentPosition: [closest - this.state.rootOffsetLeft - 7],
-          showFirstHandleTooltip: true
-        },
-        () => {
-          console.log("currentPosition", this.state.currentPosition[0]);
-          this.props.onChange(
-            this.state.currentPosition.map(pos =>
-              Math.round(
-                (pos / this.state.rootOffsetWidth) *
-                  (this.props.max - this.props.min)
-              )
-            )
+      if (this.state.firstHandledragging) {
+        if (this.props.range) {
+          this.setState(
+            {
+              currentPosition: [
+                closest - this.state.rootOffsetLeft,
+                this.state.currentPosition[1]
+              ],
+              showFirstHandleTooltip: true
+            },
+            () => {
+              this.props.onChange(
+                this.state.currentPosition.map(pos =>
+                  Math.round(
+                    (pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min)
+                  )
+                )
+              );
+            }
+          );
+        } else {
+          this.setState(
+            {
+              currentPosition: [closest - this.state.rootOffsetLeft],
+              showFirstHandleTooltip: true
+            },
+            () => {
+              this.props.onChange(
+                this.state.currentPosition.map(pos =>
+                  Math.round(
+                    (pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min)
+                  )
+                )
+              );
+            }
           );
         }
-      );
+      } else if (this.state.secondHanleDragging) {
+        if (this.props.range) {
+          this.setState(
+            {
+              currentPosition: [
+                this.state.currentPosition[0],
+                closest - this.state.rootOffsetLeft
+              ],
+              showSecondHandleTooltip: true
+            },
+            () => {
+              this.props.onChange(
+                this.state.currentPosition.map(pos =>
+                  Math.round(
+                    (pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min)
+                  )
+                )
+              );
+            }
+          );
+        } else {
+          this.setState(
+            {
+              currentPosition: [closest - this.state.rootOffsetLeft],
+              showSecondHandleTooltip: true
+            },
+            () => {
+              this.props.onChange(
+                this.state.currentPosition.map(pos =>
+                  Math.round(
+                    (pos / this.state.rootOffsetWidth) *
+                      (this.props.max - this.props.min)
+                  )
+                )
+              );
+            }
+          );
+        }
+      }
     });
   }
 
@@ -282,7 +379,8 @@ export class Slider extends React.Component {
           xScale={
             this.props.range
               ? (this.state.currentPosition[1] -
-                  this.state.currentPosition[0]) /
+                  this.state.currentPosition[0] +
+                  7) /
                 this.state.rootOffsetWidth
               : (this.state.currentPosition[0] + 7) / this.state.rootOffsetWidth
           }
@@ -294,27 +392,28 @@ export class Slider extends React.Component {
               this.props.min || 0
           )}
           show={this.state.showFirstHandleTooltip}
-          xPosition={this.state.currentPosition[0]}
+          xPosition={this.state.currentPosition[0] - 7}
         >
           <SliderHandle
-            appreance={this.props.appreance}
             ref={this.firstHandleRef}
-            xPosition={this.state.currentPosition[0]}
+            appreance={this.props.appreance}
+            xPosition={this.state.currentPosition[0] - 7}
           />
         </Tooltip>
         {this.props.range && (
           <Tooltip
             text={Math.round(
               (this.state.currentPosition[1] / this.state.rootOffsetWidth) *
-                this.props.max
+                (this.props.max - this.props.min) +
+                this.props.min || 0
             )}
             show={this.state.showSecondHandleTooltip}
-            xPosition={this.state.currentPosition[1]}
+            xPosition={this.state.currentPosition[1] - 7}
           >
             <SliderHandle
               ref={this.secondHandleRef}
               appreance={this.props.appreance}
-              xPosition={this.state.currentPosition[1]}
+              xPosition={this.state.currentPosition[1] - 7}
             />
           </Tooltip>
         )}
@@ -322,3 +421,11 @@ export class Slider extends React.Component {
     );
   }
 }
+
+Slider.propTypes = {
+  min: PropTypes.number
+};
+
+Slider.defaultProps = {
+  min: 0
+};
