@@ -10,7 +10,8 @@ export const ICONS = {
   DOOR: "door",
   MONEY: "money",
   CROP: "crop",
-  LAYOUT: "layout-outline"
+  LAYOUT: "layout-outline",
+  FILTER: "filter_list"
 };
 
 const StyledIcon = ({ type, ...props }) => {
