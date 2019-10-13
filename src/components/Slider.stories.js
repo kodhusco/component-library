@@ -12,28 +12,30 @@ export default {
 export const defaultSlider = () => (
   <div style={{ marginTop: 60, padding: 30 }}>
     <div style={{ display: "flex", alignItems: "center" }}>
-      <span>1</span>
+      <span>0</span>
       <Slider
-        value={1}
+        value={0}
         appreance="secondary"
-        min={1}
-        max={5}
+        min={0}
+        max={6}
+        step={2}
         onChange={value => console.log(value)}
       />
-      <span>5</span>
+      <span>6</span>
     </div>
     <div style={{ marginTop: 30 }}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <span>10</span>
+        <span>1000</span>
         <Slider
           range
-          value={[10, 30]}
+          value={[1000, 20000]}
           appreance="secondary"
-          min={10}
-          max={100}
+          min={1000}
+          max={20000}
+          step={1000}
           onChange={value => console.log(value)}
         />
-        <span>100</span>
+        <span>20000</span>
       </div>
     </div>
   </div>
