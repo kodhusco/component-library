@@ -15,7 +15,7 @@ const SliderHandle = styled.span`
   position: absolute;
   border-radius: 50%;
   background: ${color.lightest};
-  border: 3px solid ${color.primary};
+  border: 2px solid ${color.primary};
   ${props =>
     props.appreance &&
     `
@@ -43,6 +43,7 @@ const SliderProgress = styled.div`
 `;
 const SliderControl = styled.div`
   position: relative;
+  display: block;
   width: 100%;
   height: 12px;
   margin: 12px 12px 8px 12px;
