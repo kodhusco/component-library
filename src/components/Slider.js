@@ -21,7 +21,7 @@ const SliderHandle = styled.span`
     `
     border-color: ${color[props.appreance]}
   `}
-  top: -2px;
+  top: -3px;
   transform: translateX(${props => props.xPosition}px);
   cursor: pointer;
 `;
@@ -48,6 +48,7 @@ const SliderControl = styled.div`
   height: 12px;
   margin: 12px 12px 8px 12px;
   padding: 4px 0;
+  box-sizing: border-box;
 `;
 
 const StyledDiv = styled.div`
@@ -283,7 +284,7 @@ export class Slider extends React.Component {
               ? (this.state.currentPosition[1] -
                   this.state.currentPosition[0]) /
                 this.state.rootOffsetWidth
-              : this.state.currentPosition[0] / this.state.rootOffsetWidth
+              : (this.state.currentPosition[0] + 7) / this.state.rootOffsetWidth
           }
         ></SliderProgress>
         <Tooltip
