@@ -1,3 +1,15 @@
+# v0.21.14 (Sun Oct 13 2019)
+
+#### 🐛  Bug Fix
+
+- fix slider step [#33](https://github.com/kodhusco/component-library/pull/33) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.13 (Sun Oct 13 2019)
 
 #### 🐛  Bug Fix
