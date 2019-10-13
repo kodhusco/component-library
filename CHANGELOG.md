@@ -1,3 +1,15 @@
+# v0.21.10 (Sun Oct 13 2019)
+
+#### 🐛  Bug Fix
+
+- fix handle top [#29](https://github.com/kodhusco/component-library/pull/29) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.9 (Sun Oct 13 2019)
 
 #### 🐛  Bug Fix
