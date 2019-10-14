@@ -12,7 +12,10 @@ export default {
 export const defaultInput = () => (
   <div>
     <div>
-      <Input placeholder="Basic input" />
+      <Input
+        placeholder="Basic input"
+        onEnter={() => console.log("enter happened")}
+      />
     </div>
     <div style={{ marginTop: 10 }}>
       <Search placeholder="Search input" />

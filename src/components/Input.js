@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { color } from "../shared/styles";
 import { Icon } from "./Icon";
+import PropTypes from "prop-types";
+
+const KEYS = {
+  ENTER: 13
+};
 
 const StyledInput = styled.input`
   font-size: 14px;
@@ -18,7 +23,23 @@ const StyledInputWrapper = styled.span`
   position: relative;
 `;
 
-export const Input = ({ ...props }) => <StyledInput {...props} />;
+export class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onKeyPress = this.onKeyPress.bind(this);
+  }
+
+  onKeyPress(e) {
+    let keyCode = e.keyCode ? e.keyCode : e.which;
+    if (keyCode === KEYS.ENTER) {
+      this.props.onEnter(e);
+    }
+  }
+
+  render() {
+    return <StyledInput onKeyPress={this.onKeyPress} />;
+  }
+}
 
 export const Search = ({ ...props }) => (
   <StyledInputWrapper>
@@ -38,3 +59,7 @@ export const Search = ({ ...props }) => (
     />
   </StyledInputWrapper>
 );
+
+Input.propTypes = {
+  onEnter: PropTypes.func
+};
