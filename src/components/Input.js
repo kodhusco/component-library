@@ -32,6 +32,7 @@ export class Input extends React.Component {
 
   onKeyPress(e) {
     this.setState({ value: e.target.value });
+    this.props.onChange(e);
     if (e.target.value.length > 0 && this.props.withClear) {
       this.setState({ showClear: true });
     }
@@ -46,7 +47,12 @@ export class Input extends React.Component {
       return (
         <StyledInputWrapper>
           <StyledInput
-            style={{ paddingRight: 30, boxSizing: "border-box" }}
+            style={{
+              paddingRight: 30,
+              boxSizing: "border-box",
+              ...this.props.style
+            }}
+            className={this.props.className}
             onChange={this.onKeyPress}
             value={this.state.value}
           />
@@ -67,7 +73,13 @@ export class Input extends React.Component {
         </StyledInputWrapper>
       );
     } else {
-      return <StyledInput onKeyPress={this.onKeyPress} />;
+      return (
+        <StyledInput
+          onKeyPress={this.onKeyPress}
+          className={this.props.className}
+          style={this.props.style}
+        />
+      );
     }
   }
 }
