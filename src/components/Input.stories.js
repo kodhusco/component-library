@@ -14,6 +14,7 @@ export const defaultInput = () => (
     <div>
       <Input
         placeholder="Basic input"
+        withClear
         onEnter={() => console.log("enter happened")}
       />
     </div>

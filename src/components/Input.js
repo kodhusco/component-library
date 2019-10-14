@@ -27,9 +27,14 @@ export class Input extends React.Component {
   constructor(props) {
     super(props);
     this.onKeyPress = this.onKeyPress.bind(this);
+    this.state = { showClear: false, value: "" };
   }
 
   onKeyPress(e) {
+    this.setState({ value: e.target.value });
+    if (e.target.value.length > 0 && this.props.withClear) {
+      this.setState({ showClear: true });
+    }
     let keyCode = e.keyCode ? e.keyCode : e.which;
     if (keyCode === KEYS.ENTER) {
       this.props.onEnter(e);
@@ -37,7 +42,33 @@ export class Input extends React.Component {
   }
 
   render() {
-    return <StyledInput onKeyPress={this.onKeyPress} />;
+    if (this.props.withClear) {
+      return (
+        <StyledInputWrapper>
+          <StyledInput
+            style={{ paddingRight: 30, boxSizing: "border-box" }}
+            onChange={this.onKeyPress}
+            value={this.state.value}
+          />
+          {this.state.showClear && (
+            <Icon
+              type="clear_circle"
+              style={{
+                position: "absolute",
+                right: 10,
+                top: 4,
+                fontSize: 14,
+                cursor: "pointer",
+                color: color.mediumdark
+              }}
+              onClick={() => this.setState({ value: "", showClear: false })}
+            />
+          )}
+        </StyledInputWrapper>
+      );
+    } else {
+      return <StyledInput onKeyPress={this.onKeyPress} />;
+    }
   }
 }
 
