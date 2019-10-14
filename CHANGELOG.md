@@ -1,3 +1,15 @@
+# v0.21.15 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Input flavors [#34](https://github.com/kodhusco/component-library/pull/34) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.14 (Sun Oct 13 2019)
 
 #### 🐛  Bug Fix
