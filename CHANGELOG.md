@@ -1,3 +1,15 @@
+# v0.21.17 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- search btn [#36](https://github.com/kodhusco/component-library/pull/36) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.16 (Mon Oct 14 2019)
 
 #### 🐛  Bug Fix
