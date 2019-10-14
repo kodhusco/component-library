@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { color } from "../shared/styles";
 import { Icon } from "./Icon";
 import PropTypes from "prop-types";
+import { redirectTo } from "@reach/router";
 
 const KEYS = {
   ENTER: 13
@@ -19,7 +20,7 @@ const StyledInput = styled.input`
     border-color: ${color.medium};
   }
 `;
-const StyledInputWrapper = styled.span`
+const StyledInputWrapper = styled.div`
   position: relative;
 `;
 
@@ -32,7 +33,10 @@ export class Input extends React.Component {
 
   onKeyPress(e) {
     this.setState({ value: e.target.value });
-    this.props.onChange(e);
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
+
     if (e.target.value.length > 0 && this.props.withClear) {
       this.setState({ showClear: true });
     }
@@ -62,7 +66,7 @@ export class Input extends React.Component {
               style={{
                 position: "absolute",
                 right: 10,
-                top: 4,
+                top: 10,
                 fontSize: 14,
                 cursor: "pointer",
                 color: color.mediumdark
@@ -84,24 +88,73 @@ export class Input extends React.Component {
   }
 }
 
-export const Search = ({ ...props }) => (
-  <StyledInputWrapper>
-    <StyledInput
-      {...props}
-      style={{ paddingRight: 30, boxSizing: "border-box" }}
-    />
-    <Icon
-      type="search"
-      style={{
-        position: "absolute",
-        right: 10,
-        top: 4,
-        fontSize: 14,
-        color: color.mediumdark
-      }}
-    />
-  </StyledInputWrapper>
-);
+export class Search extends React.Component {
+  render() {
+    if (this.props.searchButton) {
+      return (
+        <StyledInputWrapper style={{ display: "flex" }}>
+          <StyledInput
+            {...this.props}
+            style={{
+              paddingRight: 30,
+              boxSizing: "border-box",
+              borderTopRightRadius: 0,
+              width: "auto",
+              flex: 1
+            }}
+          />
+          <div
+            style={{
+              background: color.primary,
+              padding: "10px 14px",
+              boxSizing: "border-box",
+              borderTopRightRadius: 3,
+              borderBottomRightRadius: 3,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer"
+            }}
+          >
+            {typeof this.props.searchButton === "boolean" && (
+              <Icon
+                type="search"
+                style={{
+                  fontSize: 14,
+                  color: color.lightest
+                }}
+              />
+            )}
+            {typeof this.props.searchButton === "string" && (
+              <span style={{ color: color.lightest }}>
+                {this.props.searchButton}
+              </span>
+            )}
+          </div>
+        </StyledInputWrapper>
+      );
+    } else {
+      return (
+        <StyledInputWrapper>
+          <StyledInput
+            {...this.props}
+            style={{ paddingRight: 30, boxSizing: "border-box" }}
+          />
+          <Icon
+            type="search"
+            style={{
+              position: "absolute",
+              right: 10,
+              top: 4,
+              fontSize: 14,
+              color: color.mediumdark
+            }}
+          />
+        </StyledInputWrapper>
+      );
+    }
+  }
+}
 
 Input.propTypes = {
   onEnter: PropTypes.func
