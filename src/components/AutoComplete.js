@@ -16,6 +16,7 @@ const Suggestions = styled.div`
   overflow: hidden;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   z-index: 999999;
+  position: absolute;
 `;
 const SuggestionItem = styled.div`
   background-color: ${color.lightest};
@@ -44,6 +45,7 @@ export class AutoComplete extends React.Component {
     this.selectSuggestion = this.selectSuggestion.bind(this);
   }
   suggest(value) {
+    console.log(value);
     if (value.length < 1)
       this.setState({ suggestions: [], showSuggestions: false });
     this.setState({ value });
