@@ -11,7 +11,14 @@ export const ICONS = {
   MONEY: "money",
   CROP: "crop",
   LAYOUT: "layout-outline",
-  FILTER: "filter_list"
+  FILTER: "filter_list",
+  CALENDAR: "calendar",
+  ARROW_LEFT: "arrow_left",
+  ARROW_RIGHT: "arrow_right",
+  ARROW_UP: "arrow_up",
+  ARROW_DOWN: "arrow_down",
+  CLEAR: "clear",
+  CLEAR_CIRCLE: "clear_circle"
 };
 
 const StyledIcon = ({ type, ...props }) => {
