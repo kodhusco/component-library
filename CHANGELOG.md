@@ -1,3 +1,15 @@
+# v0.21.16 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- fix autocomplete [#35](https://github.com/kodhusco/component-library/pull/35) ([@kodhusco](https://github.com/kodhusco))
+
+#### Authors: 1
+
+- [@kodhusco](https://github.com/kodhusco)
+
+---
+
 # v0.21.15 (Mon Oct 14 2019)
 
 #### 🐛  Bug Fix
