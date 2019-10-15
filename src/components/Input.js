@@ -145,7 +145,7 @@ export class Search extends React.Component {
             style={{
               position: "absolute",
               right: 10,
-              top: 4,
+              top: 10,
               fontSize: 14,
               color: color.mediumdark
             }}
