@@ -15,6 +15,7 @@ const StyledInput = styled.input`
   border: 1px solid ${color.mediumlight};
   color: ${color.darker};
   width: 100%;
+  outline: none;
   &:focus {
     border-color: ${color.medium};
   }
@@ -59,6 +60,7 @@ export class Input extends React.Component {
             onChange={e => this.setState({ value: e.target.value })}
             onKeyPress={this.onKeyPress}
             value={this.state.value}
+            placeholder={this.props.placeholder}
           />
           {this.state.showClear && (
             <Icon
@@ -122,6 +124,7 @@ export class Search extends React.Component {
               flex: 1,
               ...this.props.style
             }}
+            placeholder={this.props.placeholder}
             className={this.props.className}
             onChange={e => this.setState({ value: e.target.value })}
             onKeyPress={this.onKeyPress}
@@ -167,6 +170,7 @@ export class Search extends React.Component {
               boxSizing: "border-box",
               ...this.props.style
             }}
+            placeholder={this.props.placeholder}
             className={this.props.className}
             onChange={e => this.setState({ value: e.target.value })}
             onKeyPress={this.onKeyPress}
