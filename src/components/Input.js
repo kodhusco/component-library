@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { color } from "../shared/styles";
 import { Icon } from "./Icon";
 import PropTypes from "prop-types";
-import { redirectTo } from "@reach/router";
 
 const KEYS = {
   ENTER: 13
