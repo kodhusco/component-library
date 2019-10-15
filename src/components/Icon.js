@@ -18,7 +18,8 @@ export const ICONS = {
   ARROW_UP: "arrow_up",
   ARROW_DOWN: "arrow_down",
   CLEAR: "clear",
-  CLEAR_CIRCLE: "clear_circle"
+  CLEAR_CIRCLE: "clear_circle",
+  NO_DATA: "no-data"
 };
 
 const StyledIcon = ({ type, ...props }) => {
