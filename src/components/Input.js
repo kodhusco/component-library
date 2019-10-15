@@ -114,7 +114,6 @@ export class Search extends React.Component {
       return (
         <StyledInputWrapper style={{ display: "flex" }}>
           <StyledInput
-            {...this.props}
             style={{
               paddingRight: 30,
               boxSizing: "border-box",
