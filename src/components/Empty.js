@@ -8,8 +8,8 @@ const EmptyContainer = styled.div`
   padding: 20px 0;
 `;
 
-export const Empty = ({ text }) => (
-  <EmptyContainer>
+export const Empty = ({ text, ...props }) => (
+  <EmptyContainer className={props.className} style={props.style}>
     <Icon
       style={{ fontSize: 60, color: color.mediumdark }}
       type="no-data"
