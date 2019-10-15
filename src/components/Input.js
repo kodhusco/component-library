@@ -32,7 +32,6 @@ export class Input extends React.Component {
   }
 
   onKeyPress(e) {
-    this.setState({ value: e.target.value });
     if (this.props.onChange) {
       this.props.onChange(e);
     }
@@ -41,6 +40,7 @@ export class Input extends React.Component {
       this.setState({ showClear: true });
     }
     let keyCode = e.keyCode ? e.keyCode : e.which;
+    console.log(e);
     if (keyCode === KEYS.ENTER) {
       this.props.onEnter(e);
     }
@@ -57,7 +57,8 @@ export class Input extends React.Component {
               ...this.props.style
             }}
             className={this.props.className}
-            onChange={this.onKeyPress}
+            onChange={e => this.setState({ value: e.target.value })}
+            onKeyPress={this.onKeyPress}
             value={this.state.value}
           />
           {this.state.showClear && (
@@ -89,6 +90,26 @@ export class Input extends React.Component {
 }
 
 export class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+    this.onKeyPress = this.onKeyPress.bind(this);
+  }
+  onKeyPress(e) {
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
+
+    if (e.target.value.length > 0 && this.props.withClear) {
+      this.setState({ showClear: true });
+    }
+    let keyCode = e.keyCode ? e.keyCode : e.which;
+    if (keyCode === KEYS.ENTER) {
+      this.props.onSearch(this.state.value);
+    }
+  }
   render() {
     if (this.props.searchButton) {
       return (
@@ -100,8 +121,13 @@ export class Search extends React.Component {
               boxSizing: "border-box",
               borderTopRightRadius: 0,
               width: "auto",
-              flex: 1
+              flex: 1,
+              ...this.props.style
             }}
+            className={this.props.className}
+            onChange={e => this.setState({ value: e.target.value })}
+            onKeyPress={this.onKeyPress}
+            value={this.state.value}
           />
           <div
             style={{
@@ -115,6 +141,7 @@ export class Search extends React.Component {
               alignItems: "center",
               cursor: "pointer"
             }}
+            onClick={e => this.props.onSearch(this.state.value)}
           >
             {typeof this.props.searchButton === "boolean" && (
               <Icon
@@ -137,8 +164,15 @@ export class Search extends React.Component {
       return (
         <StyledInputWrapper>
           <StyledInput
-            {...this.props}
-            style={{ paddingRight: 30, boxSizing: "border-box" }}
+            style={{
+              paddingRight: 30,
+              boxSizing: "border-box",
+              ...this.props.style
+            }}
+            className={this.props.className}
+            onChange={e => this.setState({ value: e.target.value })}
+            onKeyPress={this.onKeyPress}
+            value={this.state.value}
           />
           <Icon
             type="search"

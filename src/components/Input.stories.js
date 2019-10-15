@@ -19,7 +19,11 @@ export const defaultInput = () => (
       />
     </div>
     <div style={{ marginTop: 10 }}>
-      <Search placeholder="Search input" />
+      <Search
+        placeholder="Search input"
+        searchButton
+        onSearch={value => console.log(value)}
+      />
     </div>
   </div>
 );
