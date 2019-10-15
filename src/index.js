@@ -12,3 +12,4 @@ export * from "./components/Slider";
 export * from "./components/Input";
 export * from "./components/AutoComplete";
 export * from "./components/Icon";
+export * from "./components/Empty";
