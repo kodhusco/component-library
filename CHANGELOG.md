@@ -1,3 +1,16 @@
+# v0.21.27 (Wed Oct 16 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- fixing search button width  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.26 (Wed Oct 16 2019)
 
 #### ⚠️  Pushed to master
