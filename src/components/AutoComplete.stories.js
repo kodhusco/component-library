@@ -50,8 +50,10 @@ export const defaultAutoComplete = () => (
         onSelect={value => console.log(value)}
         skipFirst="1"
       >
-        <Input
+        <Search
           placeholder="This is a custom input passed as a child to AutoComplete ..."
+          searchButton
+          searchButtonSize={20}
           style={{
             padding: 15,
             borderRadius: 5,

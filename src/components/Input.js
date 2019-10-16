@@ -103,10 +103,17 @@ export class Input extends React.Component {
 export class Search extends React.Component {
   constructor(props) {
     super(props);
+    this.someRef = React.createRef();
     this.state = {
-      value: this.props.value
+      value: this.props.value,
+      searchButtonWidth: "auto"
     };
     this.onKeyPress = this.onKeyPress.bind(this);
+  }
+  componentDidMount() {
+    this.setState({
+      searchButtonWidth: this.someRef.current.offsetHeight
+    });
   }
   componentDidUpdate(prevProps) {
     if (this.props.value !== prevProps.value) {
@@ -139,6 +146,7 @@ export class Search extends React.Component {
               flex: 1,
               ...this.props.style
             }}
+            ref={this.someRef}
             placeholder={this.props.placeholder}
             className={this.props.className}
             onChange={e => this.setState({ value: e.target.value })}
@@ -148,7 +156,8 @@ export class Search extends React.Component {
           <div
             style={{
               background: color.primary,
-              padding: "10px 14px",
+              padding: "10px 16px",
+              width: this.state.searchButtonWidth,
               boxSizing: "border-box",
               borderTopRightRadius: 3,
               borderBottomRightRadius: 3,
@@ -163,13 +172,18 @@ export class Search extends React.Component {
               <Icon
                 type="search"
                 style={{
-                  fontSize: 14,
+                  fontSize: this.props.searchButtonSize || 14,
                   color: color.lightest
                 }}
               />
             )}
             {typeof this.props.searchButton === "string" && (
-              <span style={{ color: color.lightest }}>
+              <span
+                style={{
+                  color: color.lightest,
+                  fontSize: this.props.searchButtonSize || 14
+                }}
+              >
                 {this.props.searchButton}
               </span>
             )}
@@ -180,6 +194,7 @@ export class Search extends React.Component {
       return (
         <StyledInputWrapper>
           <StyledInput
+            ref={this.someRef}
             style={{
               paddingRight: 30,
               boxSizing: "border-box",
@@ -196,8 +211,9 @@ export class Search extends React.Component {
             style={{
               position: "absolute",
               right: 10,
-              top: 10,
-              fontSize: 14,
+              top: "50%",
+              transform: "translateY(-50%)",
+              fontSize: this.props.searchButtonSize || 14,
               color: color.mediumdark
             }}
           />
