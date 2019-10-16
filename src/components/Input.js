@@ -12,7 +12,9 @@ const StyledInput = styled.input`
   font-size: 14px;
   padding: 8px 6px;
   border-radius: 3px;
-  border: 1px solid ${color.mediumlight};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${color.mediumlight};
   color: ${color.darker};
   width: 100%;
   outline: none;
@@ -142,6 +144,8 @@ export class Search extends React.Component {
               paddingRight: 30,
               boxSizing: "border-box",
               borderTopRightRadius: 0,
+              borderRightWidth: 0,
+              borderBottomRightRadius: 0,
               width: "auto",
               flex: 1,
               ...this.props.style
