@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "./Input";
+import { Input, Search } from "./Input";
 import styled from "styled-components";
 import { color } from "../shared/styles";
 import { typography } from "../shared/styles";
@@ -40,21 +40,19 @@ export class AutoComplete extends React.Component {
     this.state = {
       suggestions: [],
       showSuggestions: false,
-      value: ""
+      value: "",
+      case: ""
     };
     this.selectSuggestion = this.selectSuggestion.bind(this);
   }
   suggest(value) {
-    console.log(value);
     if (value.length < 1)
       this.setState({ suggestions: [], showSuggestions: false });
     this.setState({ value });
     if (value.length < this.props.skipFirst) return;
-    console.log(value);
     const suggestions = this.props.dataSource.filter(item =>
       item.toLowerCase().startsWith(value.toLowerCase())
     );
-    console.log(suggestions);
     this.setState({
       suggestions,
       showSuggestions: true
@@ -70,25 +68,46 @@ export class AutoComplete extends React.Component {
   render() {
     const { children } = this.props;
 
+    let child;
+
+    if (children && children.type.name === "Input") {
+      child = (
+        <Input
+          placeholder={this.props.placeholder}
+          value={this.state.value}
+          onClick={e => this.suggest(e.target.value)}
+          onChange={e => this.suggest(e.target.value)}
+          {...children.props}
+        />
+      );
+    } else if (children && children.type.name === "Search") {
+      child = (
+        <Search
+          placeholder={this.props.placeholder}
+          value={this.state.value}
+          onClick={e => this.suggest(e.target.value)}
+          onChange={e => this.suggest(e.target.value)}
+          {...children.props}
+        />
+      );
+    }
+
     return (
       <AutocompleteWrapper
         style={this.props.style}
         className={this.props.className}
       >
         {children ? (
-          <Input
-            placeholder="Autocomplete input..."
-            value={this.state.value}
-            onClick={e => this.suggest(e.target.value)}
-            onChange={e => this.suggest(e.target.value)}
-            {...children.props}
-          />
+          child
         ) : (
           <Input
-            placeholder="Autocomplete input..."
+            placeholder={this.props.placeholder}
             value={this.state.value}
             onClick={e => this.suggest(e.target.value)}
-            onChange={e => this.suggest(e.target.value)}
+            onChange={e => {
+              this.suggest(e.target.value);
+              this.setState({ case: e.target.value });
+            }}
           />
         )}
 

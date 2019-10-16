@@ -31,6 +31,12 @@ export class Input extends React.Component {
     this.state = { showClear: false, value: "" };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.value !== prevProps.value) {
+      this.setState({ value: this.props.value });
+    }
+  }
+
   onKeyPress(e) {
     if (this.props.onChange) {
       this.props.onChange(e);
@@ -57,6 +63,7 @@ export class Input extends React.Component {
               ...this.props.style
             }}
             className={this.props.className}
+            placeholder={this.props.placeholder}
             onChange={e => this.setState({ value: e.target.value })}
             onKeyPress={this.onKeyPress}
             value={this.state.value}
@@ -83,7 +90,10 @@ export class Input extends React.Component {
         <StyledInput
           onKeyPress={this.onKeyPress}
           className={this.props.className}
+          onChange={e => this.setState({ value: e.target.value })}
+          value={this.state.value}
           style={this.props.style}
+          placeholder={this.props.placeholder}
         />
       );
     }
@@ -94,9 +104,14 @@ export class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: this.props.value
     };
     this.onKeyPress = this.onKeyPress.bind(this);
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.value !== prevProps.value) {
+      this.setState({ value: this.props.value });
+    }
   }
   onKeyPress(e) {
     if (this.props.onChange) {

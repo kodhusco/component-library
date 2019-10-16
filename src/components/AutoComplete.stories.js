@@ -1,6 +1,6 @@
 import React from "react";
 import { AutoComplete } from "./AutoComplete";
-import { Input } from "./Input";
+import { Input, Search } from "./Input";
 import { Type } from "./Type";
 
 export default {
@@ -19,9 +19,27 @@ export const defaultAutoComplete = () => (
       </Type>
       <AutoComplete
         dataSource={["stockholm", "gothenburg", "source africa"]}
+        placeholder="search here..."
         onSelect={value => console.log(value)}
         skipFirst="3"
       />
+    </div>
+    <div style={{ marginTop: 20 }}>
+      <Type as="h6" variant="light">
+        Autocomplete with search
+      </Type>
+      <AutoComplete
+        dataSource={["stockholm", "gothenburg", "source africa"]}
+        placeholder="search here..."
+        onSelect={value => console.log(value)}
+        skipFirst="3"
+      >
+        <Search
+          placeholder="Search input"
+          searchButton
+          onSearch={value => console.log(value)}
+        />
+      </AutoComplete>
     </div>
     <div style={{ marginTop: 30 }}>
       <Type as="h6" variant="light">
