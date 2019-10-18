@@ -11,19 +11,25 @@ export default {
 
 export const defaultPlaceholder = () => (
   <div>
-    <div>
-      First with hero
-      <Placeholder withHero />
+    <div style={{ marginTop: 4 }}>
+      Placeholder with hero
+      <Placeholder withHero loading={true} />
     </div>
-    <div>
-      Second with TItle 10
-      <Placeholder withTitle="10" />
+    <div style={{ marginTop: 30 }}>
+      Placeholder with TItle 10% width
+      <Placeholder withTitle="10" loading={true} />
     </div>
-    <div style={{ marginTop: 10 }}>
-      <Placeholder withAvatar withContent="20" withHero={false} />
+    <div style={{ marginTop: 30 }}>
+      Placeholder with Avatar and content
+      <Placeholder withAvatar withContent="20" loading={true} />
     </div>
-    <div style={{ marginTop: 10 }}>
-      <Placeholder withAvatar withContent={{ rows: 6, width: 90 }} />
+    <div style={{ marginTop: 30 }}>
+      Placeholder with Avatar and 6 rows
+      <Placeholder
+        withAvatar
+        withContent={{ rows: 6, width: 90 }}
+        loading={true}
+      />
     </div>
   </div>
 );

@@ -13,3 +13,6 @@ export * from "./components/Input";
 export * from "./components/AutoComplete";
 export * from "./components/Icon";
 export * from "./components/Empty";
+export * from "./components/Placeholder";
+export * from "./components/List";
+export * from "./components/Avatar";

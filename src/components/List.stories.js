@@ -2,7 +2,8 @@ import React from "react";
 import { Icon } from "./Icon";
 import { List, ListItem } from "./List";
 import { color } from "../shared/styles";
-
+import { Placeholder, PlaceholderLine } from "./Placeholder";
+import { Button } from "./Button";
 export default {
   title: "Components | List",
   parameters: {
@@ -11,9 +12,71 @@ export default {
   }
 };
 
+const countPerPage = 4;
+class ListWithLoadMore extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      list: [],
+      loading: true,
+      initialLoading: true
+    };
+    this.loadData = this.loadData.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+  loadData() {
+    this.setState({
+      loading: true,
+      data: this.state.data.concat(
+        [...new Array(countPerPage)].map(() => ({
+          loading: true
+        }))
+      )
+    });
+    setTimeout(() => {
+      const data = this.state.list.concat(
+        [...new Array(countPerPage)].map(() => ({}))
+      );
+      this.setState({ list: data, data });
+    }, 1000);
+  }
+  render() {
+    return (
+      <div>
+        <List
+          withBorder
+          header={<div>Header</div>}
+          footer={<div>Footer</div>}
+          data={this.state.data}
+          listItem={item => (
+            <ListItem>
+              <PlaceholderLine loading={item.loading}>
+                {"hi how are you"}
+              </PlaceholderLine>
+            </ListItem>
+          )}
+        ></List>
+        <Button
+          onClick={this.loadData}
+          style={{ marginTop: 10, textAlign: "center" }}
+        >
+          Load more
+        </Button>
+      </div>
+    );
+  }
+}
+
 export const defaultList = () => (
   <div>
     <div>
+      <ListWithLoadMore />
+    </div>
+    <div style={{ marginTop: 30 }}>
       <List
         withBorder
         header={<div>Header</div>}

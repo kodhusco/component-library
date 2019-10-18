@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { color } from "../shared/styles";
-import { is } from "@babel/types";
+import { Avatar } from "./Avatar";
 
 const PlaceholderStyled = styled.div`
   width: 100%;
-  padding: 10px;
   display: flex;
   flex-direction: ${props => (props.withHero ? "column" : "row")};
 `;
@@ -23,73 +22,91 @@ const PlaceholderContentLine = styled.div`
   background-color: ${color.mediumlight};
 `;
 
+export const PlaceholderLine = ({ children, width, loading }) => {
+  if (loading) {
+    return (
+      <PlaceholderTitle
+        style={{ width: width ? parseInt(width) + "%" : "100%", marginTop: 0 }}
+      />
+    );
+  } else {
+    if (children) return children;
+    else return "";
+  }
+};
+
 export const Placeholder = ({
   withTitle,
   withContent,
   withAvatar,
-  withHero
-}) => (
-  <PlaceholderStyled withHero={withHero}>
-    {withHero && (
-      <div
-        style={{
-          background: color.medium,
-          height: 190,
-          width: "100%",
-          borderRadius: 2
-        }}
-      ></div>
-    )}
-    {withAvatar && (
-      <div style={{ flexGrow: 0, paddingTop: 8, marginRight: 16 }}>
-        <div
-          style={{
-            width: 32,
-            height: 32,
-            background: color.mediumlight,
-            borderRadius: "50%"
-          }}
-        ></div>
-      </div>
-    )}
-    <div style={{ flexGrow: 1 }}>
-      {withTitle && (
-        <PlaceholderTitle
-          style={{
-            width: !isNaN(parseInt(withTitle))
-              ? parseInt(withTitle) + "%"
-              : "40%"
-          }}
-        ></PlaceholderTitle>
-      )}
-      {withContent && (
-        <PlaceholderContent>
-          {" "}
-          {withContent.rows &&
-            Array.from(Array(withContent.rows).keys()).map(it => (
-              <PlaceholderContentLine key={it}></PlaceholderContentLine>
-            ))}
-          {!withContent.rows && (
-            <div>
-              <PlaceholderContentLine></PlaceholderContentLine>
-              <PlaceholderContentLine></PlaceholderContentLine>
-              <PlaceholderContentLine></PlaceholderContentLine>
+  withHero,
+  children,
+  loading
+}) => {
+  if (loading) {
+    return (
+      <PlaceholderStyled withHero={withHero}>
+        {withHero && (
+          <div
+            style={{
+              background: color.medium,
+              height: 190,
+              width: "100%",
+              borderRadius: 2,
+              marginBottom: 16
+            }}
+          ></div>
+        )}
+        <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+          {withAvatar && (
+            <div style={{ flexGrow: 0, paddingTop: 8, marginRight: 16 }}>
+              <Avatar size={32} style={{ background: color.mediumlight }} />
             </div>
           )}
-          <PlaceholderContentLine
-            style={{
-              width: !isNaN(parseInt(withContent))
-                ? parseInt(withContent) + "%"
-                : withContent.width
-                ? parseInt(withContent.width) + "%"
-                : "80%"
-            }}
-          ></PlaceholderContentLine>
-        </PlaceholderContent>
-      )}
-    </div>
-  </PlaceholderStyled>
-);
+          <div style={{ flexGrow: 1 }}>
+            {withTitle && (
+              <PlaceholderTitle
+                style={{
+                  width: !isNaN(parseInt(withTitle))
+                    ? parseInt(withTitle) + "%"
+                    : "40%"
+                }}
+              ></PlaceholderTitle>
+            )}
+            {withContent && (
+              <PlaceholderContent>
+                {" "}
+                {withContent.rows &&
+                  Array.from(Array(withContent.rows).keys()).map(it => (
+                    <PlaceholderContentLine key={it}></PlaceholderContentLine>
+                  ))}
+                {!withContent.rows && (
+                  <div>
+                    <PlaceholderContentLine></PlaceholderContentLine>
+                    <PlaceholderContentLine></PlaceholderContentLine>
+                    <PlaceholderContentLine></PlaceholderContentLine>
+                  </div>
+                )}
+                <PlaceholderContentLine
+                  style={{
+                    width: !isNaN(parseInt(withContent))
+                      ? parseInt(withContent) + "%"
+                      : withContent.width
+                      ? parseInt(withContent.width) + "%"
+                      : "80%"
+                  }}
+                ></PlaceholderContentLine>
+              </PlaceholderContent>
+            )}
+          </div>
+        </div>
+      </PlaceholderStyled>
+    );
+  } else {
+    if (children) return children;
+    else return "";
+  }
+};
 
 Placeholder.propTypes = {
   withTitle: PropTypes.oneOfType([
@@ -99,12 +116,14 @@ Placeholder.propTypes = {
   ]),
   withContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   withAvatar: PropTypes.bool,
-  withHero: PropTypes.bool
+  withHero: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 Placeholder.defaultProps = {
   withTitle: true,
   withContent: true,
   withAvatar: false,
-  withHero: false
+  withHero: false,
+  loading: false
 };
