@@ -8,6 +8,7 @@ const PlaceholderStyled = styled.div`
   width: 100%;
   padding: 10px;
   display: flex;
+  flex-direction: ${props => (props.withHero ? "column" : "row")};
 `;
 const PlaceholderTitle = styled.div`
   height: 16px;
@@ -22,8 +23,23 @@ const PlaceholderContentLine = styled.div`
   background-color: ${color.mediumlight};
 `;
 
-export const Placeholder = ({ withTitle, withContent, withAvatar }) => (
-  <PlaceholderStyled>
+export const Placeholder = ({
+  withTitle,
+  withContent,
+  withAvatar,
+  withHero
+}) => (
+  <PlaceholderStyled withHero={withHero}>
+    {withHero && (
+      <div
+        style={{
+          background: color.medium,
+          height: 190,
+          width: "100%",
+          borderRadius: 2
+        }}
+      ></div>
+    )}
     {withAvatar && (
       <div style={{ flexGrow: 0, paddingTop: 8, marginRight: 16 }}>
         <div
@@ -48,12 +64,24 @@ export const Placeholder = ({ withTitle, withContent, withAvatar }) => (
       )}
       {withContent && (
         <PlaceholderContent>
-          <PlaceholderContentLine></PlaceholderContentLine>
-          <PlaceholderContentLine></PlaceholderContentLine>
+          {" "}
+          {withContent.rows &&
+            Array.from(Array(withContent.rows).keys()).map(it => (
+              <PlaceholderContentLine key={it}></PlaceholderContentLine>
+            ))}
+          {!withContent.rows && (
+            <div>
+              <PlaceholderContentLine></PlaceholderContentLine>
+              <PlaceholderContentLine></PlaceholderContentLine>
+              <PlaceholderContentLine></PlaceholderContentLine>
+            </div>
+          )}
           <PlaceholderContentLine
             style={{
               width: !isNaN(parseInt(withContent))
                 ? parseInt(withContent) + "%"
+                : withContent.width
+                ? parseInt(withContent.width) + "%"
                 : "80%"
             }}
           ></PlaceholderContentLine>
@@ -69,12 +97,14 @@ Placeholder.propTypes = {
     PropTypes.number,
     PropTypes.string
   ]),
-  withContent: PropTypes.bool,
-  withAvatar: PropTypes.bool
+  withContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  withAvatar: PropTypes.bool,
+  withHero: PropTypes.bool
 };
 
 Placeholder.defaultProps = {
   withTitle: true,
   withContent: true,
-  withAvatar: false
+  withAvatar: false,
+  withHero: false
 };
