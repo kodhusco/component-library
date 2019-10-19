@@ -41,11 +41,17 @@ export const Placeholder = ({
   withAvatar,
   withHero,
   children,
-  loading
+  loading,
+  style,
+  className
 }) => {
   if (loading) {
     return (
-      <PlaceholderStyled withHero={withHero}>
+      <PlaceholderStyled
+        withHero={withHero}
+        className={className}
+        style={style}
+      >
         {withHero && (
           <div
             style={{
