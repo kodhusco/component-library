@@ -21,7 +21,11 @@ export const defaultPlaceholder = () => (
     </div>
     <div style={{ marginTop: 30 }}>
       Placeholder with Avatar and content
-      <Placeholder withAvatar withContent="20" loading={true} />
+      <Placeholder
+        withAvatar={{ size: 64, type: "square" }}
+        withContent={{ rows: 1 }}
+        loading={true}
+      />
     </div>
     <div style={{ marginTop: 30 }}>
       Placeholder with Avatar and 6 rows

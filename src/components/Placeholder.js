@@ -66,7 +66,11 @@ export const Placeholder = ({
         <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
           {withAvatar && (
             <div style={{ flexGrow: 0, paddingTop: 8, marginRight: 16 }}>
-              <Avatar size={32} style={{ background: color.mediumlight }} />
+              <Avatar
+                size={withAvatar.size || 32}
+                style={{ background: color.mediumlight }}
+                type={withAvatar.type || "circle"}
+              />
             </div>
           )}
           <div style={{ flexGrow: 1 }}>
@@ -84,24 +88,24 @@ export const Placeholder = ({
                 {" "}
                 {withContent.rows &&
                   Array.from(Array(withContent.rows).keys()).map(it => (
-                    <PlaceholderContentLine key={it}></PlaceholderContentLine>
+                    <PlaceholderContentLine key={it}></PlaceholderContentLine> // add size now to also size the last element here!
                   ))}
                 {!withContent.rows && (
                   <div>
                     <PlaceholderContentLine></PlaceholderContentLine>
                     <PlaceholderContentLine></PlaceholderContentLine>
                     <PlaceholderContentLine></PlaceholderContentLine>
+                    <PlaceholderContentLine
+                      style={{
+                        width: !isNaN(parseInt(withContent))
+                          ? parseInt(withContent) + "%"
+                          : withContent.width
+                          ? parseInt(withContent.width) + "%"
+                          : "80%"
+                      }}
+                    ></PlaceholderContentLine>
                   </div>
                 )}
-                <PlaceholderContentLine
-                  style={{
-                    width: !isNaN(parseInt(withContent))
-                      ? parseInt(withContent) + "%"
-                      : withContent.width
-                      ? parseInt(withContent.width) + "%"
-                      : "80%"
-                  }}
-                ></PlaceholderContentLine>
               </PlaceholderContent>
             )}
           </div>
