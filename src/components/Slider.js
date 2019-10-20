@@ -10,8 +10,8 @@ const SliderBar = styled.div`
   border-radius: 2px;
 `;
 const SliderHandle = styled.span`
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   display: inline-block;
   position: absolute;
   border-radius: 50%;
@@ -22,7 +22,7 @@ const SliderHandle = styled.span`
     `
     border-color: ${color[props.appreance]}
   `}
-  top: -3px;
+  top: -1px;
   transform: translateX(${props => props.xPosition}px);
   cursor: pointer;
 `;
@@ -67,7 +67,7 @@ const StyledDiv = styled.div`
   position: absolute;
   &:after {
     content: "";
-    bottom: -7px;
+    bottom: -6px;
     width: 0;
     height: 0;
     left: 50%;
@@ -334,9 +334,9 @@ export class Slider extends PureComponent {
             this.props.range
               ? (this.state.currentPosition[1] -
                   this.state.currentPosition[0] +
-                  7) /
+                  6) /
                 this.state.rootOffsetWidth
-              : (this.state.currentPosition[0] + 7) / this.state.rootOffsetWidth
+              : (this.state.currentPosition[0] + 6) / this.state.rootOffsetWidth
           }
         ></SliderProgress>
         <Tooltip
@@ -348,12 +348,12 @@ export class Slider extends PureComponent {
             ) * this.props.step
           }
           show={this.state.showFirstHandleTooltip}
-          xPosition={this.state.currentPosition[0] - 7}
+          xPosition={this.state.currentPosition[0] - 6}
         >
           <SliderHandle
             ref={this.firstHandleRef}
             appreance={this.props.appreance}
-            xPosition={this.state.currentPosition[0] - 7}
+            xPosition={this.state.currentPosition[0] - 6}
           />
         </Tooltip>
         {this.props.range && (
@@ -366,12 +366,12 @@ export class Slider extends PureComponent {
               ) * this.props.step
             }
             show={this.state.showSecondHandleTooltip}
-            xPosition={this.state.currentPosition[1] - 7}
+            xPosition={this.state.currentPosition[1] - 6}
           >
             <SliderHandle
               ref={this.secondHandleRef}
               appreance={this.props.appreance}
-              xPosition={this.state.currentPosition[1] - 7}
+              xPosition={this.state.currentPosition[1] - 6}
             />
           </Tooltip>
         )}

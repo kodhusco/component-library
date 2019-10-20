@@ -125,7 +125,7 @@ Placeholder.propTypes = {
     PropTypes.string
   ]),
   withContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  withAvatar: PropTypes.bool,
+  withAvatar: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   withHero: PropTypes.bool,
   loading: PropTypes.bool
 };
