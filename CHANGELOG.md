@@ -1,3 +1,16 @@
+# v0.21.35 (Sun Oct 20 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- Fix placeholder and slider  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.34 (Sat Oct 19 2019)
 
 #### ⚠️  Pushed to master
