@@ -25,6 +25,22 @@ const SliderHandle = styled.span`
   top: -1px;
   transform: translateX(${props => props.xPosition}px);
   cursor: pointer;
+  &:after {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: ${color.primary};
+    ${props =>
+      props.appreance &&
+      `
+      background-color: ${color[props.appreance]}
+    `}
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 const SliderProgress = styled.div`
   position: absolute;
@@ -56,10 +72,10 @@ const StyledDiv = styled.div`
   color: ${color.lighter};
   background: ${color.darker};
   display: inline-block;
-  bottom: 18px;
+  bottom: 24px;
   font-size: ${typography.size.s2}px;
   display: none;
-  transform: translate(calc(${props => props.xPosition + 8}px - 50%));
+  transform: translate(calc(${props => props.xPosition + 6}px - 50%));
   display: ${props => props.show && `block`};
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   padding: 5px 10px;
@@ -67,7 +83,7 @@ const StyledDiv = styled.div`
   position: absolute;
   &:after {
     content: "";
-    bottom: -6px;
+    bottom: -7px;
     width: 0;
     height: 0;
     left: 50%;
