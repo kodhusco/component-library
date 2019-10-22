@@ -10,8 +10,8 @@ const SliderBar = styled.div`
   border-radius: 2px;
 `;
 const SliderHandle = styled.span`
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   display: inline-block;
   position: absolute;
   border-radius: 50%;
@@ -30,11 +30,11 @@ const SliderHandle = styled.span`
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    background-color: ${color.primary};
+    background-color: ${color.medium};
     ${props =>
       props.appreance &&
       `
-      background-color: ${color[props.appreance]}
+      background-color: ${color.mediumdark}
     `}
     position: absolute;
     left: 50%;
@@ -75,7 +75,7 @@ const StyledDiv = styled.div`
   bottom: 24px;
   font-size: ${typography.size.s2}px;
   display: none;
-  transform: translate(calc(${props => props.xPosition + 6}px - 50%));
+  transform: translate(calc(${props => props.xPosition + 7}px - 50%));
   display: ${props => props.show && `block`};
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   padding: 5px 10px;
@@ -350,9 +350,9 @@ export class Slider extends PureComponent {
             this.props.range
               ? (this.state.currentPosition[1] -
                   this.state.currentPosition[0] +
-                  6) /
+                  7) /
                 this.state.rootOffsetWidth
-              : (this.state.currentPosition[0] + 6) / this.state.rootOffsetWidth
+              : (this.state.currentPosition[0] + 7) / this.state.rootOffsetWidth
           }
         ></SliderProgress>
         <Tooltip
@@ -364,12 +364,12 @@ export class Slider extends PureComponent {
             ) * this.props.step
           }
           show={this.state.showFirstHandleTooltip}
-          xPosition={this.state.currentPosition[0] - 6}
+          xPosition={this.state.currentPosition[0] - 7}
         >
           <SliderHandle
             ref={this.firstHandleRef}
             appreance={this.props.appreance}
-            xPosition={this.state.currentPosition[0] - 6}
+            xPosition={this.state.currentPosition[0] - 7}
           />
         </Tooltip>
         {this.props.range && (
@@ -382,12 +382,12 @@ export class Slider extends PureComponent {
               ) * this.props.step
             }
             show={this.state.showSecondHandleTooltip}
-            xPosition={this.state.currentPosition[1] - 6}
+            xPosition={this.state.currentPosition[1] - 7}
           >
             <SliderHandle
               ref={this.secondHandleRef}
               appreance={this.props.appreance}
-              xPosition={this.state.currentPosition[1] - 6}
+              xPosition={this.state.currentPosition[1] - 7}
             />
           </Tooltip>
         )}
