@@ -1,3 +1,16 @@
+# v0.21.37 (Tue Oct 22 2019)
+
+#### ⚠️  Pushed to master
+
+- merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- slider bigger handle  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.36 (Sun Oct 20 2019)
 
 #### ⚠️  Pushed to master
