@@ -22,11 +22,11 @@ const Text = styled.span`
   display: inline-block;
   vertical-align: top;
   font-weight: ${typography.weight.regular};
-  display: flex;
-  align-items: center;
-  > *:last-child {
-    margin-left: 8px;
-  }
+  // display: flex;
+  // align-items: center;
+  // > *:last-child {
+  //   margin-left: 8px;
+  // }
 `;
 
 const StyledButton = styled.button`
@@ -166,14 +166,45 @@ const StyledButton = styled.button`
                   box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
                 }
               `}
+              ${props =>
+                props.disabled &&
+                `
+                  cursor: not-allowed !important;
+                  border: 1px solid ${color.mediumdark};
+                  color: ${color.darkest};
+                  background-color: ${color.medium};
+                  opacity: 0.5;
+                  &:hover {
+                    transform: none;
+                    color: ${color.darker};
+                    background-color: ${color.medium};
+                  }
+                  &:active {
+                    box-shadow: none;
+                  }
+                  &:focus {
+                    box-shadow: none;
+                  }
+                  &:focus:hover {
+                    box-shadow: none;
+                  }
+                `}
+                ${props =>
+                  props.block &&
+                  `
+                  width: 100%;
+                  text-align: center;
+                `}
+
 `;
 
 export const Button = ({ children, ...props }) => {
   const innerText = (
     <Text>
-      {React.Children.map(children, child => (
+      {/* {React.Children.map(children, child => (
         <span>{child}</span>
-      ))}
+      ))} */}
+      {children}
     </Text>
   );
 

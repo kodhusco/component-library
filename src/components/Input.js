@@ -11,19 +11,24 @@ const KEYS = {
 const StyledInput = styled.input`
   font-size: 14px;
   padding: 8px 6px;
-  border-radius: 3px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${color.mediumlight};
   color: ${color.darker};
   width: 100%;
   outline: none;
-  &:focus {
-    border-color: ${color.medium};
-  }
+  border: 0;
+  // &:focus {
+  //   border-color: ${color.medium};
+  // }
 `;
 const StyledInputWrapper = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0 5px;
+  border-color: ${color.mediumlight};
+  transition: border-color 0.6s;
 `;
 
 export class Input extends React.Component {
@@ -48,26 +53,27 @@ export class Input extends React.Component {
       this.setState({ showClear: true });
     }
     let keyCode = e.keyCode ? e.keyCode : e.which;
-    console.log(e);
     if (keyCode === KEYS.ENTER) {
       this.props.onEnter(e);
     }
   }
 
   render() {
+    const type = this.props.type || "text";
     if (this.props.withClear) {
       return (
-        <StyledInputWrapper>
+        <StyledInputWrapper style={this.props.style}>
           <StyledInput
             style={{
               paddingRight: 30,
               boxSizing: "border-box",
               ...this.props.style
             }}
+            type={type}
             className={this.props.className}
             placeholder={this.props.placeholder}
             onChange={e => this.setState({ value: e.target.value })}
-            onKeyPress={this.onKeyPress}
+            onKeyUp={this.onKeyPress}
             value={this.state.value}
             placeholder={this.props.placeholder}
           />
@@ -89,14 +95,18 @@ export class Input extends React.Component {
       );
     } else {
       return (
-        <StyledInput
-          onKeyPress={this.onKeyPress}
-          className={this.props.className}
-          onChange={e => this.setState({ value: e.target.value })}
-          value={this.state.value}
-          style={this.props.style}
-          placeholder={this.props.placeholder}
-        />
+        <StyledInputWrapper style={this.props.style}>
+          {"prefix" in this.props && this.props.prefix}
+          <StyledInput
+            onKeyUp={this.onKeyPress}
+            className={this.props.className}
+            onChange={e => this.setState({ value: e.target.value })}
+            value={this.state.value}
+            style={this.props.style}
+            type={type}
+            placeholder={this.props.placeholder}
+          />
+        </StyledInputWrapper>
       );
     }
   }
@@ -124,6 +134,7 @@ export class Search extends React.Component {
   }
   onKeyPress(e) {
     if (this.props.onChange) {
+      this.props.value = e.target.value;
       this.props.onChange(e);
     }
 

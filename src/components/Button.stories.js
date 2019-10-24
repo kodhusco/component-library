@@ -17,6 +17,11 @@ export const primaryButton = () => (
       <Button appearance="primary">Primary button</Button>
     </div>
     <div style={{ marginTop: 10 }}>
+      <Button appearance="primary" disabled>
+        Primary button
+      </Button>
+    </div>
+    <div style={{ marginTop: 10 }}>
       <Button appearance="primaryOutline">Primary outline button</Button>
     </div>
     <div style={{ marginTop: 10 }}>

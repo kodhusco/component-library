@@ -22,7 +22,8 @@ export const ICONS = {
   NO_DATA: "no-data",
   USER: "user",
   USERS: "users",
-  USER_ADD_OUTLINE: "user-add-outline"
+  USER_ADD_OUTLINE: "user-add-outline",
+  LOCK: "lock"
 };
 
 const StyledIcon = ({ type, ...props }) => {
