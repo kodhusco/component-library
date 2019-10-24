@@ -20,7 +20,6 @@ export class Validator extends React.Component {
     this.handlers.push(handler);
   }
   static validationDecorator(name, rules) {
-    console.log("got called");
     return OriginalComponent => {
       if (!this.elements[name]) {
         this.elements[name] = {
@@ -30,8 +29,6 @@ export class Validator extends React.Component {
       }
       const ref = React.createRef();
       this.applyRules(rules, this.elements[name].value, name);
-
-      console.log("errors!!", this.elements);
 
       let newProps = {
         ref,
@@ -117,7 +114,6 @@ export class Validator extends React.Component {
       if (rule.required) {
         if (value.length > 0) {
           this.errors = { ...this.errors, [name]: false };
-          console.log(name, this.errors[name]);
           if (ref) {
             ReactDOM.findDOMNode(ref.current).style.borderColor = "";
             ReactDOM.findDOMNode(ref.current).nextSibling.innerHTML = "";
