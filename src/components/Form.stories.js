@@ -20,6 +20,9 @@ const CenteredDiv = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media (max-width: 768px) {
+    width: 98%;
+  }
 `;
 
 class DefaultForm extends React.Component {
