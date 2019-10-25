@@ -1,3 +1,15 @@
+# v0.21.40 (Fri Oct 25 2019)
+
+#### ⚠️  Pushed to master
+
+- fix form in mobile  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.39 (Thu Oct 24 2019)
 
 #### ⚠️  Pushed to master
