@@ -11,15 +11,19 @@ const FormElement = ({ children, ...props }) => (
   <StyledFormElement {...props}>{children}</StyledFormElement>
 );
 
-export class Validator extends React.Component {
-  static elements = {};
-  static pristine = true;
-  static errors = {};
-  static handlers = [];
-  static subcribeToErrors(handler) {
+class Validator {
+  elements = {};
+  pristine = true;
+  errors = {};
+  handlers = [];
+  subcribeToErrors(handler) {
     this.handlers.push(handler);
   }
-  static validationDecorator(name, rules) {
+
+  getValue(field) {
+    return this.elements[field] ? this.elements[field].value : "";
+  }
+  validationDecorator(name, rules) {
     return OriginalComponent => {
       if (!this.elements[name]) {
         this.elements[name] = {
@@ -35,7 +39,6 @@ export class Validator extends React.Component {
         onChange: e => {
           if (this.pristine) this.pristine = false;
           // loop through rules and apply logic for each rule
-          Validator.applyRules(rules, e.target.value, name, ref);
 
           this.elements[name].value
             ? (this.elements[name].value = e.target.value)
@@ -43,6 +46,8 @@ export class Validator extends React.Component {
                 ...this.elements[name],
                 value: e.target.value
               });
+
+          this.applyRules(rules, e.target.value, name, ref);
           this.handlers.forEach(item => {
             item.call(window, { errors: this.errors, pristine: this.pristine });
           });
@@ -68,7 +73,7 @@ export class Validator extends React.Component {
       );
     };
   }
-  static validate = callback => {
+  validate = callback => {
     return new Promise((resolve, reject) => {
       Object.keys(this.elements).forEach(key => {
         this.elements[key].rules.forEach(rule => {
@@ -109,7 +114,7 @@ export class Validator extends React.Component {
     });
   };
 
-  static applyRules(rules, value, name, ref) {
+  applyRules(rules, value, name, ref) {
     rules.apply.rules.forEach(rule => {
       if (rule.required) {
         if (value.length > 0) {
@@ -130,8 +135,28 @@ export class Validator extends React.Component {
               "block";
           }
         }
-      }
-      if (value.length > 0 && rule.type && rule.type === "email") {
+      } else if (ref && rule.check) {
+        rule.check(value, msg => {
+          if (msg) {
+            this.errors = { ...this.errors, [name]: true };
+            if (ref) {
+              ReactDOM.findDOMNode(ref.current).style.borderColor =
+                color.negative;
+              ReactDOM.findDOMNode(ref.current).nextSibling.innerHTML = msg;
+              ReactDOM.findDOMNode(ref.current).nextSibling.style.display =
+                "block";
+            }
+          } else {
+            this.errors = { ...this.errors, [name]: false };
+            if (ref) {
+              ReactDOM.findDOMNode(ref.current).style.borderColor = "";
+              ReactDOM.findDOMNode(ref.current).nextSibling.innerHTML = "";
+              ReactDOM.findDOMNode(ref.current).nextSibling.style.display =
+                "none";
+            }
+          }
+        });
+      } else if (value.length > 0 && rule.type && rule.type === "email") {
         if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
           this.errors = { ...this.errors, [name]: true };
           if (ref) {
@@ -157,6 +182,11 @@ export class Validator extends React.Component {
 
 export class Form extends React.Component {
   static Element = FormElement;
+  static Build(OriginalComponent) {
+    const validator = new Validator();
+
+    return () => <OriginalComponent validator={validator} />;
+  }
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);

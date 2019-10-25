@@ -45,10 +45,6 @@ export class Checkbox extends React.Component {
   componentDidMount() {
     this.setState({ checked: this.checkbox.checked });
   }
-  componentDidUpdate(prevProps) {
-    console.log("called");
-    return false;
-  }
   onChange(e) {
     this.setState({ checked: e.target.checked });
   }

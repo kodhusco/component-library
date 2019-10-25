@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Validator } from "./Form";
+import { Form } from "./Form";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
@@ -20,6 +20,7 @@ const CenteredDiv = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  
   @media (max-width: 768px) {
     width: 98%;
   }
@@ -33,15 +34,14 @@ class DefaultForm extends React.Component {
     };
   }
   componentDidMount() {
-    Validator.subcribeToErrors(formState => {
+    this.props.validator.subcribeToErrors(formState => {
       const someError = Object.keys(formState.errors).some(
         field => formState.errors[field]
       );
-
       this.setState({ errors: someError || formState.pristine });
     });
 
-    Validator.validate();
+    this.props.validator.validate();
   }
 
   render() {
@@ -60,11 +60,11 @@ class DefaultForm extends React.Component {
         <Form
           onSubmit={e => {
             e.preventDefault();
-            Validator.validate().then(data => console.log(data));
+            this.props.validator.validate().then(data => console.log(data));
           }}
         >
           <Form.Element>
-            {Validator.validationDecorator("email", {
+            {this.props.validator.validationDecorator("email", {
               apply: {
                 rules: [
                   { required: true, msg: "Enter your email address" },
@@ -93,7 +93,7 @@ class DefaultForm extends React.Component {
             )}
           </Form.Element>
           <Form.Element>
-            {Validator.validationDecorator("password", {
+            {this.props.validator.validationDecorator("password", {
               apply: {
                 rules: [{ required: true, msg: "Enter your password!" }]
               }
@@ -135,10 +135,182 @@ class DefaultForm extends React.Component {
   }
 }
 
-export const defaultForm = () => {
-  return <DefaultForm />;
+const Login1 = Form.Build(DefaultForm);
+
+class RegisterForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      errors: false
+    };
+    this.checkSamePasswords = this.checkSamePasswords.bind(this);
+  }
+  componentDidMount() {
+    this.props.validator.subcribeToErrors(formState => {
+      const someError = Object.keys(formState.errors).some(
+        field => formState.errors[field]
+      );
+
+      this.setState({ errors: someError || formState.pristine });
+    });
+
+    this.props.validator.validate();
+  }
+
+  checkSamePasswords(elementValue, showMsg) {
+    if (elementValue !== this.props.validator.getValue("password")) {
+      showMsg("Confirm password should be the same as password");
+    }
+  }
+
+  render() {
+    return (
+      <CenteredDiv
+        width={40}
+        style={{
+          padding: "30px",
+          paddingTop: 40,
+          border: "1px solid #ccc",
+          borderRadius: 5,
+          fontSize: 14,
+          background: "#fff"
+        }}
+      >
+        <Form
+          onSubmit={e => {
+            e.preventDefault();
+            this.props.validator.validate().then(data => console.log(data));
+          }}
+        >
+          <Form.Element>
+            {this.props.validator.validationDecorator("email", {
+              apply: {
+                rules: [
+                  { required: true, msg: "Enter your email address" },
+                  {
+                    type: "email",
+                    msg: "Invalid email. Enter a valid one"
+                  }
+                ]
+              }
+            })(
+              <Input
+                prefix={
+                  <Icon
+                    type="user"
+                    style={{
+                      right: 10,
+                      top: 10,
+                      fontSize: 14,
+                      cursor: "pointer",
+                      color: color.mediumdark
+                    }}
+                  />
+                }
+                placeholder="Enter your email address ..."
+              />
+            )}
+          </Form.Element>
+          <Form.Element>
+            {this.props.validator.validationDecorator("password", {
+              apply: {
+                rules: [{ required: true, msg: "Enter your password!" }]
+              }
+            })(
+              <Input
+                prefix={
+                  <Icon
+                    type="lock"
+                    style={{
+                      right: 10,
+                      top: 10,
+                      fontSize: 14,
+                      cursor: "pointer",
+                      color: color.mediumdark
+                    }}
+                  />
+                }
+                type="password"
+                placeholder="Enter your password ..."
+              />
+            )}
+          </Form.Element>
+          <Form.Element>
+            {this.props.validator.validationDecorator("confirmpassword", {
+              apply: {
+                rules: [
+                  { required: true, msg: "Confirm your password!" },
+                  { check: this.checkSamePasswords }
+                ]
+              }
+            })(
+              <Input
+                prefix={
+                  <Icon
+                    type="lock"
+                    style={{
+                      right: 10,
+                      top: 10,
+                      fontSize: 14,
+                      cursor: "pointer",
+                      color: color.mediumdark
+                    }}
+                  />
+                }
+                type="password"
+                placeholder="Enter your password ..."
+              />
+            )}
+          </Form.Element>
+          <Form.Element style={{ marginBottom: 8 }}>
+            {this.props.validator.validationDecorator("agreement", {
+              apply: {
+                rules: [
+                  {
+                    required: true,
+                    msg: "You need to agree with our terms of services!"
+                  }
+                ]
+              }
+            })(
+              <Checkbox>
+                Agree with{" "}
+                <a href="" style={{ color: color.primary }}>
+                  Terms and services
+                </a>
+                .
+              </Checkbox>
+            )}
+          </Form.Element>
+          <Form.Element style={{ marginTop: 15 }}>
+            <Button block htmlType="submit" disabled={this.state.errors}>
+              Register
+            </Button>
+          </Form.Element>
+        </Form>
+      </CenteredDiv>
+    );
+  }
+}
+
+const NewRegisterForm = Form.Build(RegisterForm);
+
+export const loginForm = () => {
+  return (
+    <div>
+      <Login1 />
+    </div>
+  );
 };
 
-defaultForm.story = {
-  name: "Default Form"
+loginForm.story = {
+  name: "Login Form"
+};
+
+export const registerForm = () => {
+  return <NewRegisterForm />;
+};
+
+registerForm.story = {
+  name: "Register Form"
 };
