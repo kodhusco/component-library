@@ -20,6 +20,10 @@ class Validator {
     this.handlers.push(handler);
   }
 
+  makeDirty() {
+    if (this.pristine) this.pristine = false;
+  }
+
   getValue(field) {
     return this.elements[field] ? this.elements[field].value : "";
   }

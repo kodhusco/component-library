@@ -11,10 +11,28 @@ export default {
 
 export const defaultCheckbox = () => (
   <div>
-    <Checkbox>Do you agree with our terms and services?</Checkbox>
+    <Checkbox onChange={e => console.log(e.target.checked)}>
+      Do you agree with our terms and services? (Uncheked)
+    </Checkbox>
   </div>
 );
 
 defaultCheckbox.story = {
   name: "Basic checkbox"
+};
+
+export const checkedCheckbox = () => (
+  <div>
+    <Checkbox
+      disabled
+      checked={true}
+      onChange={e => console.log(e.target.checked)}
+    >
+      Checked
+    </Checkbox>
+  </div>
+);
+
+checkedCheckbox.story = {
+  name: "Checked checkbox"
 };

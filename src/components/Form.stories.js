@@ -60,6 +60,7 @@ class DefaultForm extends React.Component {
         <Form
           onSubmit={e => {
             e.preventDefault();
+            this.props.validator.makeDirty();
             this.props.validator.validate().then(data => console.log(data));
           }}
         >
@@ -154,7 +155,7 @@ class RegisterForm extends React.Component {
       this.setState({ errors: someError || formState.pristine });
     });
 
-    this.props.validator.validate();
+    // this.props.validator.validate();
   }
 
   checkSamePasswords(elementValue, showMsg) {
@@ -179,6 +180,7 @@ class RegisterForm extends React.Component {
         <Form
           onSubmit={e => {
             e.preventDefault();
+            this.props.validator.makeDirty();
             this.props.validator.validate().then(data => console.log(data));
           }}
         >
@@ -262,7 +264,7 @@ class RegisterForm extends React.Component {
               />
             )}
           </Form.Element>
-          <Form.Element style={{ marginBottom: 8 }}>
+          <Form.Element style={{ marginBottom: 30 }}>
             {this.props.validator.validationDecorator("agreement", {
               apply: {
                 rules: [

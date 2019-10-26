@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { color } from "../shared/styles";
+import { removePropertiesDeep } from "@babel/types";
 
 const StyledCheckbox = styled.span`
   //   border: 1px solid #ccc;
@@ -10,18 +11,19 @@ const StyledCheckbox = styled.span`
   display: inline-block;
   padding: 0;
   position: relative;
-  background: #fff;
-  border: 1px solid ${color.mediumdark};
+  background: ${props => (props.disabled ? color.medium : color.lightest)};
+  ${props => props.disabled && `cursor: not-allowed !important;`}
+  border: 1px solid
+    ${props => (props.disabled ? color.mediumlight : color.mediumdark)};
   ${props =>
     props.checked &&
     `
-    background: ${color.primary};
+    background: ${props.disabled ? color.mediumlight : color.primary};
     border: 0;
   &:after {
-    
     content: "";
     width: 3px;
-    border: 2px solid #fff;
+    border: 2px solid ${props.disabled ? color.mediumdark : color.lightest};
     height: 6px;
     border-left: none;
     border-top: none;
@@ -43,10 +45,15 @@ export class Checkbox extends React.Component {
     };
   }
   componentDidMount() {
-    this.setState({ checked: this.checkbox.checked });
+    if (this.props.checked) this.setState({ checked: this.props.checked });
   }
+  "";
   onChange(e) {
+    if (this.props.disabled) return;
     this.setState({ checked: e.target.checked });
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
   }
   render() {
     return (
@@ -76,9 +83,13 @@ export class Checkbox extends React.Component {
               display: "none"
             }}
             id={this.props.id || "kodhus-checkbox"}
+            checked={this.state.checked}
             onChange={this.onChange}
           ></input>
-          <StyledCheckbox checked={this.state.checked}></StyledCheckbox>
+          <StyledCheckbox
+            checked={this.state.checked}
+            disabled={this.props.disabled}
+          ></StyledCheckbox>
         </span>
         <span style={{ color: color.dark, fontSize: 14 }}>
           {this.props.children}
