@@ -6,6 +6,7 @@ import { Icon } from "./Icon";
 import { Checkbox } from "./Checkbox";
 import { color } from "../shared/styles";
 import styled from "styled-components";
+import { breakpoint } from "../shared/styles";
 
 export default {
   title: "Components | Form",
@@ -21,7 +22,7 @@ const CenteredDiv = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoint.screenSmall}) {
     width: 98%;
   }
 `;

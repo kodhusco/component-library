@@ -35,13 +35,13 @@ export const breakpoint = {
   "screen-xl": "1920px",
   "screen-lg": "1200px",
   "screen-md": "992px",
-  "screen-sm": "768px",
-  "screen-xs": "480px",
+  screenSmall: "768px", // Small devices (landscape phones, tablets, 768px and up)
+  screenXs: "480px", // Smaller devices (portrait phones, 480px and up)
   "screen-xl-min": "1920px",
   "screen-lg-min": "1200px",
   "screen-md-min": "992px",
-  "screen-sm-min": "768px",
-  "screen-xs-min": "480px",
+  screenSmallMin: "768px", // Small devices (landscape phones, tablets, 768px and up)
+  screenXsMin: "480px", // Smaller devices (portrait phones, 480px and up)
   "screen-lg-max": "1919px",
   "screen-md-max": "1199px",
   "screen-sm-max": "991px",

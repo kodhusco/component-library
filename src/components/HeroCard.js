@@ -18,7 +18,7 @@ const StyledDiv = styled.div`
   ${props =>
     props.type === MOBILE_TYPE.LIST &&
     `
-  @media (max-width: ${breakpoint["screen-sm"]}) {
+  @media (max-width: ${breakpoint.screenSmall}) {
     display: flex;
     padding: 10px;
     box-sizing: border-box;
@@ -37,7 +37,7 @@ const Image = styled.div`
   ${props =>
     props.type === MOBILE_TYPE.LIST &&
     `
-    @media (max-width: ${breakpoint["screen-sm"]}) {
+    @media (max-width: ${breakpoint.screenSmall}) {
       flex-shrink: 0;
       width: 100px;
       height: 100px;
@@ -49,7 +49,7 @@ const Content = styled.div`
   ${props =>
     props.type === MOBILE_TYPE.LIST &&
     `
-    @media (max-width: ${breakpoint["screen-sm"]}) {
+    @media (max-width: ${breakpoint.screenSmall}) {
       padding: 5px 10px;
       width: calc(100% - 120px);
     }
@@ -59,7 +59,7 @@ const Content = styled.div`
 const Title = styled.div`
   font-size: ${typography.size.m1}px;
 
-  @media (max-width: ${breakpoint["screen-sm"]}) {
+  @media (max-width: ${breakpoint.screenSmall}) {
     font-size: ${typography.size.s3}px;
   }
   font-weight: ${typography.weight.regular};
