@@ -1,3 +1,16 @@
+# v0.21.44 (Mon Oct 28 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+- Add correct value for herocard list  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.43 (Mon Oct 28 2019)
 
 #### ⚠️  Pushed to master
