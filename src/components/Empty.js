@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "./Icon";
-import { color, typography } from "../shared/styles";
+import { color, typography, spacing } from "../shared/styles";
 
 const EmptyContainer = styled.div`
   text-align: center;
-  padding: 20px 0;
+  padding: ${spacing.large}px 0;
 `;
 
 export const Empty = ({ text, ...props }) => (

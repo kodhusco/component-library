@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { typography, color } from "../shared/styles";
+import { typography, color, spacing } from "../shared/styles";
+import { borderRadius } from "polished";
 
 const HOVER_EFFECTS = {
   NONE: "none",
@@ -40,7 +41,7 @@ const InfoWrapper = styled.div`
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 15px;
+  padding: ${spacing.medium}px;
   width: 100%;
   background: rgba(255, 255, 255, 0.2);
   text-align: left;
@@ -57,7 +58,7 @@ const SubTitle = styled.div`
   margin-top: 10px;
   font-size: 14px;
   display: inline-block;
-  border-radius: 3px;
+  border-radius: ${borderRadius.small}px;
   transition: all 0.4s;
   font-weight: ${typography.weight.regular};
 `;

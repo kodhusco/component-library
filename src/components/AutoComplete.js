@@ -2,21 +2,22 @@ import React from "react";
 import { Input, Search } from "./Input";
 import styled from "styled-components";
 import { color } from "../shared/styles";
-import { typography } from "../shared/styles";
+import { typography, boxShadow } from "../shared/styles";
+import { borderRadius } from "polished";
 
 const AutocompleteWrapper = styled.div`
   position: relative;
 `;
 
 const Suggestions = styled.div`
+  position: absolute;
   border: 1px solid ${color.mediumlight};
   width: 100%;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: ${borderRadius.small}px;
+  border-bottom-right-radius: ${borderRadius.small}px;
   overflow: hidden;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: ${boxShadow.default};
   z-index: 999999;
-  position: absolute;
 `;
 const SuggestionItem = styled.div`
   background-color: ${color.lightest};

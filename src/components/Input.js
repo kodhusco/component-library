@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "../shared/styles";
+import { color, typography } from "../shared/styles";
 import { Icon } from "./Icon";
 import PropTypes from "prop-types";
+import { borderRadius } from "polished";
 
 const KEYS = {
   ENTER: 13
 };
 
 const StyledInput = styled.input`
-  font-size: 14px;
+  font-size: ${typography.size.s2}px;
   padding: 8px 6px;
   color: ${color.darker};
   width: 100%;
@@ -23,7 +24,7 @@ const StyledInputWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  border-radius: 3px;
+  border-radius: ${borderRadius.small}px;
   border-width: 1px;
   border-style: solid;
   padding: 0 5px;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { color, typography } from "../shared/styles";
+import { borderRadius } from "polished";
 
 const StyledList = styled.div`
   color: ${color.dark};
@@ -8,7 +9,7 @@ const StyledList = styled.div`
     props.withBorder &&
     `
         border: 1px solid ${color.mediumlight};
-        border-radius: 3px;
+        border-radius: ${borderRadius.small}px;
     `}
 `;
 const StyledListItem = styled.div`

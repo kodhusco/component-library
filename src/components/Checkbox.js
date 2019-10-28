@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { color } from "../shared/styles";
 import { removePropertiesDeep } from "@babel/types";
+import { borderRadius } from "polished";
 
 const StyledCheckbox = styled.span`
-  //   border: 1px solid #ccc;
   width: 16px;
   height: 16px;
-  border-radius: 3px;
+  border-radius: ${borderRadius.small}px;
   display: inline-block;
   padding: 0;
   position: relative;

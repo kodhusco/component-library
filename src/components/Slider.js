@@ -2,12 +2,13 @@ import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { color, typography } from "../shared/styles";
 import PropTypes from "prop-types";
+import { borderRadius } from "polished";
 
 const SliderBar = styled.div`
   width: 100%;
   height: 4px;
   background: ${color.mediumlight};
-  border-radius: 2px;
+  border-radius: ${borderRadius.small}px;
 `;
 const SliderHandle = styled.span`
   width: 14px;

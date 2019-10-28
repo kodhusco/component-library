@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { darken, rgba } from "polished";
-import { color, typography } from "../shared/styles";
+import { darken, rgba, border, borderRadius } from "polished";
+import { color, typography, spacing } from "../shared/styles";
 
 const SIZES = {
   SMALL: "small",
@@ -30,9 +30,9 @@ const Text = styled.span`
 `;
 
 const StyledButton = styled.button`
-  background: rgb(69, 8, 233);
+  background: ${color.primary};
   border: 0;
-  border-radius: 3px;
+  border-radius: ${borderRadius.small}px;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
@@ -48,7 +48,6 @@ const StyledButton = styled.button`
   opacity: 1;
   margin: 0;
   outline: 0;
-
   font-size: ${props =>
     props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2}px;
   font-weight: ${typography.weight.extrabold};

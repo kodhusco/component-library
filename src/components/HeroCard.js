@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { typography, breakpoint } from "../shared/styles";
+import {
+  typography,
+  breakpoint,
+  boxShadow,
+  spacing,
+  color
+} from "../shared/styles";
+import { borderRadius } from "polished";
 
 const MOBILE_TYPE = {
   LIST: "list",
@@ -11,16 +18,16 @@ const MOBILE_TYPE = {
 const StyledDiv = styled.div`
   position: relative;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: ${borderRadius.small}px;
   box-sizing: border-box;
-  border: 1px solid #eee;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid ${color.mediumlight};
+  box-shadow: ${boxShadow.default};
   ${props =>
     props.type === MOBILE_TYPE.LIST &&
     `
   @media (max-width: ${breakpoint.screenSmall}) {
     display: flex;
-    padding: 10px;
+    padding: ${spacing.medium}px;
     box-sizing: border-box;
   }
   `}
@@ -32,7 +39,7 @@ const Image = styled.div`
     background: url(${props.image});
     background-size: cover;
     background-position: center center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${color.medium};
   `}
   ${props =>
     props.type === MOBILE_TYPE.LIST &&

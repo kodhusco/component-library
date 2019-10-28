@@ -1,6 +1,6 @@
 export const color = {
   // Palette
-  primary: "rgb(69, 8, 233)", // dark blue
+  primary: "#4508e9", // dark blue
   secondary: "#1EA7FD", // ocean
   tertiary: "#DDDDDD",
 
@@ -23,12 +23,28 @@ export const color = {
   darker: "#444444",
   darkest: "#333333",
 
-  border: "rgba(0,0,0,.1)",
+  border: "rgba(0, 0 , 0, .1)",
 
   // Status
   positive: "#66BF3C",
   negative: "#FF4400",
   warning: "#E69D00"
+};
+
+export const spacing = {
+  padding: {
+    small: 2,
+    medium: 10,
+    large: 20
+  },
+  borderRadius: {
+    small: 3,
+    default: 5
+  }
+};
+
+export const boxShadow = {
+  default: "0 2px 2px rgba(0, 0, 0, 0.1)"
 };
 
 export const breakpoint = {
