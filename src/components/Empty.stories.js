@@ -11,7 +11,7 @@ export default {
 
 export const defaultEmpty = () => (
   <div>
-    <Empty text="Nothing found" />
+    <Empty text="Nothing found" size={200} />
   </div>
 );
 
