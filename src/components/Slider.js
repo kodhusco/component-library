@@ -1,8 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { color, typography } from "../shared/styles";
+import { color, typography, borderRadius } from "../shared/styles";
 import PropTypes from "prop-types";
-import { borderRadius } from "polished";
 
 const SliderBar = styled.div`
   width: 100%;

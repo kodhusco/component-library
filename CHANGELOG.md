@@ -1,3 +1,15 @@
+# v0.21.45 (Mon Oct 28 2019)
+
+#### ⚠️  Pushed to master
+
+- variablize some values  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.44 (Mon Oct 28 2019)
 
 #### ⚠️  Pushed to master

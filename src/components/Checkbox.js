@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "../shared/styles";
-import { removePropertiesDeep } from "@babel/types";
-import { borderRadius } from "polished";
+import { color, borderRadius } from "../shared/styles";
 
 const StyledCheckbox = styled.span`
   width: 16px;
