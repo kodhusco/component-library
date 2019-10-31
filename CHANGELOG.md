@@ -1,3 +1,15 @@
+# v0.21.47 (Thu Oct 31 2019)
+
+#### ⚠️  Pushed to master
+
+- Merge branch 'master' of https://github.com/kodhusco/component-library  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.46 (Thu Oct 31 2019)
 
 #### ⚠️  Pushed to master
