@@ -76,6 +76,7 @@ export class AutoComplete extends React.Component {
         <Input
           placeholder={this.props.placeholder}
           value={this.state.value}
+          style={{ border: 0 }}
           onClick={e => this.suggest(e.target.value)}
           onChange={e => this.suggest(e.target.value)}
           {...children.props}

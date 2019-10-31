@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { darken, rgba, border, borderRadius } from "polished";
-import { color, typography, spacing } from "../shared/styles";
+import { darken, rgba } from "polished";
+import { color, typography, borderRadius } from "../shared/styles";
 
 const SIZES = {
   SMALL: "small",
@@ -22,11 +22,11 @@ const Text = styled.span`
   display: inline-block;
   vertical-align: top;
   font-weight: ${typography.weight.regular};
-  // display: flex;
-  // align-items: center;
-  // > *:last-child {
-  //   margin-left: 8px;
-  // }
+  display: flex;
+  align-items: center;
+  > *:last-child {
+    margin-left: 8px;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -48,6 +48,7 @@ const StyledButton = styled.button`
   opacity: 1;
   margin: 0;
   outline: 0;
+  
   font-size: ${props =>
     props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2}px;
   font-weight: ${typography.weight.extrabold};
@@ -200,10 +201,9 @@ const StyledButton = styled.button`
 export const Button = ({ children, ...props }) => {
   const innerText = (
     <Text>
-      {/* {React.Children.map(children, child => (
+      {React.Children.map(children, child => (
         <span>{child}</span>
-      ))} */}
-      {children}
+      ))}
     </Text>
   );
 

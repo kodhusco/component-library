@@ -1,6 +1,6 @@
 export const color = {
   // Palette
-  primary: "#4508e9", // dark blue
+  primary: "#1c55c5", // dark blue
   secondary: "#1EA7FD", // ocean
   tertiary: "#DDDDDD",
 
@@ -32,15 +32,14 @@ export const color = {
 };
 
 export const spacing = {
-  padding: {
-    small: 2,
-    medium: 10,
-    large: 20
-  },
-  borderRadius: {
-    small: 3,
-    default: 5
-  }
+  small: 2,
+  medium: 10,
+  large: 20
+};
+
+export const borderRadius = {
+  small: 3,
+  default: 5
 };
 
 export const boxShadow = {

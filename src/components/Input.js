@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { color, typography } from "../shared/styles";
 import { Icon } from "./Icon";
 import PropTypes from "prop-types";
-import { borderRadius } from "polished";
+import { borderRadius } from "../shared/styles";
 
 const KEYS = {
   ENTER: 13
@@ -16,9 +16,6 @@ const StyledInput = styled.input`
   width: 100%;
   outline: none;
   border: 0;
-  // &:focus {
-  //   border-color: ${color.medium};
-  // }
 `;
 const StyledInputWrapper = styled.div`
   position: relative;
@@ -27,7 +24,7 @@ const StyledInputWrapper = styled.div`
   border-radius: ${borderRadius.small}px;
   border-width: 1px;
   border-style: solid;
-  padding: 0 5px;
+  padding: 0 0 0 5px;
   border-color: ${color.mediumlight};
   transition: border-color 0.6s;
 `;
@@ -152,6 +149,7 @@ export class Search extends React.Component {
       return (
         <StyledInputWrapper style={{ display: "flex" }}>
           <StyledInput
+            ref={this.someRef}
             style={{
               paddingRight: 30,
               boxSizing: "border-box",
@@ -160,9 +158,9 @@ export class Search extends React.Component {
               borderBottomRightRadius: 0,
               width: "auto",
               flex: 1,
-              ...this.props.style
+              ...this.props.style,
+              border: 0
             }}
-            ref={this.someRef}
             placeholder={this.props.placeholder}
             className={this.props.className}
             onChange={e => this.setState({ value: e.target.value })}
@@ -174,13 +172,15 @@ export class Search extends React.Component {
               background: color.primary,
               padding: "10px 16px",
               width: this.state.searchButtonWidth,
+              height: this.state.searchButtonWidth,
               boxSizing: "border-box",
               borderTopRightRadius: 3,
               borderBottomRightRadius: 3,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              cursor: "pointer"
+              cursor: "pointer",
+              alignSelf: "strech"
             }}
             onClick={e => this.props.onSearch(this.state.value)}
           >
@@ -210,7 +210,6 @@ export class Search extends React.Component {
       return (
         <StyledInputWrapper>
           <StyledInput
-            ref={this.someRef}
             style={{
               paddingRight: 30,
               boxSizing: "border-box",

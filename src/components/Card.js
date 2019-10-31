@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { typography, color, spacing } from "../shared/styles";
-import { borderRadius } from "polished";
+import { typography, color, spacing, borderRadius } from "../shared/styles";
 
 const HOVER_EFFECTS = {
   NONE: "none",

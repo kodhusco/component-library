@@ -6,9 +6,9 @@ import {
   breakpoint,
   boxShadow,
   spacing,
-  color
+  color,
+  borderRadius
 } from "../shared/styles";
-import { borderRadius } from "polished";
 
 const MOBILE_TYPE = {
   LIST: "list",
