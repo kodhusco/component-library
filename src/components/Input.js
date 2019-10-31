@@ -132,7 +132,6 @@ export class Search extends React.Component {
   }
   onKeyPress(e) {
     if (this.props.onChange) {
-      this.props.value = e.target.value;
       this.props.onChange(e);
     }
 
