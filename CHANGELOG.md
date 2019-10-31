@@ -1,3 +1,16 @@
+# v0.21.49 (Thu Oct 31 2019)
+
+#### ⚠️  Pushed to master
+
+- :x  (kodhus@kodhus.com)
+- Autocomplete works  (kodhus@kodhus.com)
+
+#### Authors: 1
+
+- kodhus (kodhus@kodhus.com)
+
+---
+
 # v0.21.48 (Thu Oct 31 2019)
 
 #### ⚠️  Pushed to master
