@@ -19,6 +19,7 @@ export const APPEARANCES = {
 };
 
 const Text = styled.span`
+  justify-content: center;
   display: inline-block;
   vertical-align: top;
   font-weight: ${typography.weight.regular};
