@@ -209,6 +209,7 @@ export class Search extends React.Component {
       return (
         <StyledInputWrapper>
           <StyledInput
+            ref={this.someRef}
             style={{
               paddingRight: 30,
               boxSizing: "border-box",

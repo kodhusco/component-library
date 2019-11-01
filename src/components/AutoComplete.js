@@ -71,27 +71,15 @@ export class AutoComplete extends React.Component {
 
     let child;
 
-    if (children && children.type.name === "Input") {
-      child = (
-        <Input
-          placeholder={this.props.placeholder}
-          value={this.state.value}
-          style={{ border: 0 }}
-          onClick={e => this.suggest(e.target.value)}
-          onChange={e => this.suggest(e.target.value)}
-          {...children.props}
-        />
-      );
-    } else if (children && children.type.name === "Search") {
-      child = (
-        <Search
-          placeholder={this.props.placeholder}
-          value={this.state.value}
-          onClick={e => this.suggest(e.target.value)}
-          onChange={e => this.suggest(e.target.value)}
-          {...children.props}
-        />
-      );
+    if (children) {
+      child = React.cloneElement(children, {
+        placeholder: this.props.placeholder,
+        value: [this.state.value],
+        style: { border: 0 },
+        onClick: e => this.suggest(e.target.value),
+        onChange: e => this.suggest(e.target.value),
+        ...children.props
+      });
     }
 
     return (

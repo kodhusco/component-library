@@ -14,6 +14,20 @@ export default {
 export const defaultAutoComplete = () => (
   <div>
     <div>
+      See if this works
+      <AutoComplete
+        dataSource={["stockholm", "gothenburg", "samao"]}
+        skipFirst={3}
+        onSelect={value => this.props.history.push(`/results/${value}`)}
+      >
+        <Search
+          placeholder="Enter your search here..."
+          searchButton
+          onSearch={value => this.props.history.push(`/results/${value}`)}
+        />
+      </AutoComplete>
+    </div>
+    <div>
       <Type as="h6" variant="light">
         Default Autocomplete
       </Type>
