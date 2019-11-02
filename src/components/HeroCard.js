@@ -19,6 +19,7 @@ const StyledDiv = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: ${borderRadius.small}px;
+  background: #fff;
   box-sizing: border-box;
   border: 1px solid ${color.mediumlight};
   box-shadow: ${boxShadow.default};
